@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Header from './Header';
+import Form from './Form';
 
 import chirp1 from './chirp1.wav';
 import chirp2 from './chirp2.mp3';
@@ -87,30 +88,7 @@ class App extends Component {
           <Header/>
           <main>
           <p class="chirps"><span>{cpm}</span> Chirps per Minute</p>
-            <form>
-              <input class="range"
-                type="range"
-                min="20"
-                max="260"
-                value={cpm}
-                onChange={this.handleChange} />
-              <input class="number" 
-                type="number" min="40" max="260"
-                min="20"
-                max="260"
-                value={cpm} 
-                onChange={this.handleChange}/>
-              <div class="parent">
-                <label>
-                  <p>What 🎶 are you playing?</p>
-                <input class="piece"
-                  type="text"
-                  placeholder="Right now I'm playing..."
-                  name="piece" />
-                </label>
-                <input type="submit" value="Store"/>
-              </div>
-            </form>
+           <Form/>
           </main>
         </div>
         <button onClick={this.startAndStop}>
