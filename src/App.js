@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import './App.css';
 import Header from './Header';
 
-import chirp1 from './chirp2.wav';
-import chirp2 from './bird1.wav';
+import chirp1 from './chirp1.wav';
+import chirp2 from './chirp2.mp3';
 
 
 class App extends Component {
@@ -105,6 +105,7 @@ class App extends Component {
                   <p>What 🎶 are you playing?</p>
                 <input class="piece"
                   type="text"
+                  placeholder="Right now I'm playing..."
                   name="piece" />
                 </label>
                 <input type="submit" value="Store"/>
