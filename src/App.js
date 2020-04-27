@@ -51,7 +51,7 @@ class App extends Component {
       this.setState({
         count: 0,
         playing: true
-        // This second argument is used so that a chirp is played as soon as the button is clicked. 
+        // This second argument is used so that a chirp is played as soon as the button is clicked and does not wait for setState. 
       }, this.chirp);
     }
   }
