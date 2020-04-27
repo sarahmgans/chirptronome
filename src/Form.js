@@ -1,24 +1,24 @@
 import React from 'react'
 
-function Form (props) {
+function Form (props){
   return (
     <form>
-      <input class="range"
+      <input className="range"
         type="range"
         min="20"
         max="260"
-        value={cpm}
-        onChange={props.onChange} />
-      <input class="number"
-        type="number" min="40" max="260"
+        value={props.cpm}
+        onChange={props.handleChange} />
+      <input className="number"
+        type="number"
         min="20"
         max="260"
-        value={cpm}
-        onChange={props.onChange} />
-      <div class="parent">
+        value={props.cpm}
+        onChange={props.handleChange} />
+      <div className="parent">
         <label>
           <p>What 🎶 are you playing?</p>
-          <input class="piece"
+          <input className="piece"
             type="text"
             placeholder="Right now I'm playing..."
             name="piece" />
@@ -28,5 +28,6 @@ function Form (props) {
     </form>
   )
 }
+
 
 export default Form;

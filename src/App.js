@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import './App.css';
 import Header from './Header';
+import Byline from './Byline';
 import Form from './Form';
+import Button from './Button';
+
 
 import chirp1 from './chirp1.wav';
 import chirp2 from './chirp2.mp3';
-
-
 class App extends Component {
   constructor(){
     super();
@@ -24,16 +25,14 @@ class App extends Component {
   }
 
   chirp = () => {
-    const { count, chirpsPerMeasure } = this.state;
-
     // If the metronome is on the downbeat of the four-beat pattern that is set in the state, chirp2 will play.
-    if (count % chirpsPerMeasure === 0) {
+    if (this.state.count % this.state.chirpsPerMeasure === 0) {
       this.chirp2.play();
     } else {
       this.chirp1.play();
     }
 
-    // The setState is used to keep track of which beat in each 4/4 measure we are on by dividing the current count by the beats per measure.  
+    // The setState method allows the count to increase by one by passing in an object with the key of count and setting it to count plus one. It also keeps track of which beat in each 4/4 measure we are on by using the modulo operator and the chirpsPerMeasure key. 
     this.setState(state => ({
       count: (state.count + 1) % state.chirpsPerMeasure
     }));
@@ -46,7 +45,7 @@ class App extends Component {
       this.setState({
         playing: false
       });
-    // However, if it is not already playing, a timer is set that takes the number 60, divides it by the cpm chosen by the user, and multiplies it by 1 second. 
+      // However, if it is not already playing, a timer is set that takes the number 60, divides it by the cpm chosen by the user, and multiplies it by 1 second. 
     } else {
       this.timer = setInterval(this.chirp, (60 / this.state.cpm) * 1000);
       this.setState({
@@ -57,47 +56,42 @@ class App extends Component {
     }
   }
 
-  // Allow the user to adjust the cpm through the number and range inputs. this.handleChange will be passed as the onChange prop in those inputs. 
+  // Allow the user to adjust the cpm through the number and range inputs.
   handleChange = event => {
     const cpm = event.target.value;
 
     // If the metronome is already playing and the user changes the cpm through the range or number input, the timer has to be cleared and this.timer has to be re-calculated.
-    if(this.state.playing) {
+    if (this.state.playing) {
       clearInterval(this.timer);
       this.timer = setInterval(this.chirp, (60 / cpm) * 1000);
 
       // After the new cpm is set by the user, the beat count is also reset to 0 so that the first of every four chirps is recognized as the down beat of the beatPerMeasure. 
       this.setState({
         count: 0,
-        cpm
+        cpm: cpm
       });
 
-    // However, if the metronome is not already playing, the cpm is just updated through the setState. 
+      // However, if the metronome is not already playing, the cpm is just updated through the setState. 
     } else {
-      this.setState({cpm});
+      this.setState({ cpm });
     }
   }
 
   render(){
-    // Whether playing is true or false + the cpm will determine the state
-    const {playing, cpm} = this.state;
-
     return (
       <div className="chirptronome">
         <div className="data">
           <Header/>
           <main>
-          <p class="chirps"><span>{cpm}</span> Chirps per Minute</p>
-           <Form/>
+            <Byline cpm={this.state.cpm}/>
+            <Form handleChange={this.handleChange} cpm={this.state.cpm}/>
           </main>
         </div>
-        <button onClick={this.startAndStop}>
-          {/* If playing is true, the button will display the word Stop. If it is false, it will say the word Start. */}
-          {playing ? 'Stop' : 'Start'}
-        </button>
+        <Button playing={this.state.playing} startAndStop={this.startAndStop}/>
       </div>
     );
   }
 }
 
 export default App;
+
