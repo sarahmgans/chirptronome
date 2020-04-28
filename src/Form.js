@@ -1,32 +1,43 @@
-// import React from 'react'
+import React from 'react'
 
-// function Form (props){
-//   return (
-//     <form>
-//       <input className="range"
-//         type="range"
-//         min="20"
-//         max="260"
-//         value={props.cpm}
-//         onChange={props.handleChange} />
-//       <input className="number"
-//         type="number"
-//         min="20"
-//         max="260"
-//         value={props.cpm}
-//         onChange={props.handleChange} />
-//       <div className="parent">
-//         <label>
-//           <p>What 🎶 are you playing?</p>
-//           <input className="piece"
-//             type="text"
-//             placeholder="Right now I'm playing..."
-//             name="piece" />
-//         </label>
-//         <input type="submit" value="Store" />
-//       </div>
-//     </form>
-//   )
-// }
+function Form (props) {
+  return(
+    <form action="" onSubmit={props.handleSubmit}>
+      <input
+        className="range"
+        type="range"
+        min="20"
+        max="260"
+        value={props.userNumberInput}
+        id="userLog"
+        onChange={props.handleChange}
+      />
+      <div className="parent">
+        <label>
+          <p>What <span aria-label="music" className="musicNotes" role="img">🎶</span> are you playing?</p>
+          <input
+            className="piece"
+            type="text"
+            placeholder="Title:"
+            name="piece"
+            value={props.userInput}
+            id="userLog"
+            onChange={props.handleUserInput}
+          />
+          <input
+            className="composer"
+            type="text"
+            placeholder="Composer:"
+            name="composer"
+            value={props.userCompInput}
+            id="userComp"
+            onChange={props.handleCompInput}
+          />
+        </label>
+        <button type="submit">Store</button>
+      </div>
+    </form>
+  )
+}
 
-// export default Form;
+export default Form;

@@ -15,6 +15,9 @@ function Log(props) {
         <span className="bold">Title:</span> {props.logTitle}
       </p>
       <p>
+        <span className="bold">Composer:</span> {props.logComp}
+      </p>
+      <p>
         <span className="bold">Tempo:</span> {props.cpm} Chirps per Minute
       </p>
       <span className="x">☒</span>

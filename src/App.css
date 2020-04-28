@@ -64,6 +64,10 @@ input[type="text"] {
   margin-top: 20px;
 }
 
+input.composer {
+  margin-top: 13px;
+}
+
 button[type="submit"] {
   width: 25%;
   margin: 0 auto;
@@ -125,11 +129,12 @@ ul {
 span.x {
   display: inline-block;
   font-size: 30px;
+  margin-bottom: 7px;
 }
 
 li p {
   font-size: 23px;
-  margin: 10px;
+  margin: 15px;
 }
 
 span.bold {

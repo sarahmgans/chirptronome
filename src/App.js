@@ -7,7 +7,7 @@ import Log from './Log'
 import Header from './Header';
 import Byline from './Byline';
 import Button from './Button';
-// import Form from './Form';
+import Form from './Form';
 
 
 import chirp1 from './chirp1.wav';
@@ -22,13 +22,9 @@ class App extends Component {
       chirpsPerMeasure: 4,
       logs: [],
       userInput: '',
+      userCompInput: '',
       userNumberInput: 80
     }
-
-    // Create user input for both cpm and title
-    // Create event listener for userNumberInput (for cpm to setState)
-    // On submit, push both user input states to firebase (this may require creating an object to push from both states first)
-    // create variable for object to push, title: userInput and tempo: userNumberInput
 
     // console.log(this.state);
     // Audio files of bird sounds
@@ -48,7 +44,7 @@ class App extends Component {
       const logsArray = []
       for(let key in data){
         // logName is the object that contains tempo and title
-        logsArray.push({ logId: key, logName: data[key]})
+        logsArray.push({logId: key, logName: data[key]})
         console.log(data[key]);
       }
       // console.log(logsArray);
@@ -61,29 +57,37 @@ class App extends Component {
   handleSubmit = (e) => {
     // putting info into firebase
     e.preventDefault()
-    if (this.state.userInput !==''){
+    if (this.state.userInput !=='' && this.state.userCompInput !==''){
       const dbRef = firebase.database().ref()
       // object that will be in firebase
       const toSave = {
         title: this.state.userInput,
-        tempo: this.state.userNumberInput
+        composer: this.state.userCompInput,
+        tempo: this.state.userNumberInput,
       }
 
       dbRef.push(toSave)
       
       this.setState({
         userInput:'',
+        userCompInput: '',
         userNumberInput: 80
       })
+    } else {
+      alert('Please go back and enter information for both the Title and the Composer!')
     }
   }
 
   handleUserInput = (event) => {
     // take event.target.value (what the user is typing) and put it into this.state.userInput
-    console.log(event.target.value)
-
     this.setState({
       userInput: event.target.value
+    })
+  }
+
+  handleCompInput = (event) => {
+    this.setState({
+      userCompInput: event.target.value
     })
   }
 
@@ -110,7 +114,7 @@ class App extends Component {
       });
       // However, if it is not already playing, a timer is set that takes the number 60, divides it by the cpm chosen by the user, and multiplies it by 1 second. 
     } else {
-      this.timer = setInterval(this.chirp, (60 / this.state.cpm) * 1000);
+      this.timer = setInterval(this.chirp, (60 / this.state.userNumberInput) * 1000);
       this.setState({
         count: 0,
         playing: true
@@ -148,52 +152,29 @@ class App extends Component {
           <Header />
           <main>
             <Byline cpm={userNumberInput} />
-            <form action="" onSubmit={this.handleSubmit}>
-              <input
-                className="range"
-                type="range"
-                min="20"
-                max="260"
-                value={this.state.userNumberInput}
-                id="userLog"
-                onChange={this.handleChange}
-                // onChange={this.handleUserNumberInput}
-              />
-              <div className="parent">
-                <label>
-                  <p>
-                    What{" "}
-                    <span aria-label="music" className="musicNotes" role="img">
-                      🎶
-                    </span>{" "}
-                    are you playing?
-                  </p>
-                  <input
-                    className="piece"
-                    type="text"
-                    placeholder="Title:"
-                    name="piece"
-                    value={this.state.userInput}
-                    id="userLog"
-                    onChange={this.handleUserInput}
+            <Form 
+              handleSubmit={this.handleSubmit}
+              userNumberInput={this.state.userNumberInput}
+              handleChange={this.handleChange}
+              userInput={this.state.userInput}
+              handleUserInput={this.handleUserInput}
+              userCompInput={this.state.userCompInput}
+              handleCompInput={this.handleCompInput}
+            />
+            <Button playing={playing} startAndStop={this.startAndStop} />
+            <ul>
+              {this.state.logs.map((log) => {
+                return (
+                  <Log
+                    key={log.logId}
+                    logId={log.logId}
+                    logTitle={log.logName.title}
+                    cpm={log.logName.tempo}
+                    logComp={log.logName.composer}
                   />
-                </label>
-                <button type="submit">Store</button>
-                <Button playing={playing} startAndStop={this.startAndStop} />
-                <ul>
-                  {this.state.logs.map((log) => {
-                    return (
-                      <Log
-                        key={log.logId}
-                        logId={log.logId}
-                        logTitle={log.logName.title}
-                        cpm={log.logName.tempo}
-                      />
-                    );
-                  })}
-                </ul>
-              </div>
-            </form>
+                );
+              })}
+            </ul>
           </main>
         </div>
       </div>
