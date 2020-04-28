@@ -19,11 +19,16 @@ class App extends Component {
     this.state = {
       playing: false,
       count: 0,
-      cpm: 80,
       chirpsPerMeasure: 4,
       logs: [],
-      userInput: ""
+      userInput: '',
+      userNumberInput: 80
     }
+
+    // Create user input for both cpm and title
+    // Create event listener for userNumberInput (for cpm to setState)
+    // On submit, push both user input states to firebase (this may require creating an object to push from both states first)
+    // create variable for object to push, title: userInput and tempo: userNumberInput
 
     // console.log(this.state);
     // Audio files of bird sounds
@@ -31,17 +36,20 @@ class App extends Component {
     this.chirp2 = new Audio(chirp2);
   }
 
-  // grad the list of logs from our database
+  // grab the list of logs from our database
   componentDidMount() {
     // set up a listener to firebase
     const dbRef = firebase.database().ref();
+    // taking info out of firebase to put on page
     dbRef.on('value', (result) => {
       // console.log(result.val())
       const data = result.val();
       // turn data from an object into an array
       const logsArray = []
       for(let key in data){
-        logsArray.push({logName: data[key], logId: key})
+        // logName is the object that contains tempo and title
+        logsArray.push({ logId: key, logName: data[key]})
+        console.log(data[key]);
       }
       // console.log(logsArray);
       this.setState({
@@ -51,25 +59,33 @@ class App extends Component {
   }
 
   handleSubmit = (e) => {
+    // putting info into firebase
     e.preventDefault()
     if (this.state.userInput !==''){
       const dbRef = firebase.database().ref()
-      dbRef.push(this.state.userInput)
+      // object that will be in firebase
+      const toSave = {
+        title: this.state.userInput,
+        tempo: this.state.userNumberInput
+      }
+
+      dbRef.push(toSave)
+      
       this.setState({
-        userInput:''
+        userInput:'',
+        userNumberInput: 80
       })
     }
   }
 
   handleUserInput = (event) => {
     // take event.target.value (what the user is typing) and put it into this.state.userInput
-    // console.log(event.target.value)
+    console.log(event.target.value)
 
     this.setState({
       userInput: event.target.value
     })
   }
-
 
   chirp = () => {
     // If the metronome is on the downbeat of the four-beat pattern that is set in the state, chirp2 will play.
@@ -115,31 +131,33 @@ class App extends Component {
       // After the new cpm is set by the user, the beat count is also reset to 0 so that the first of every four chirps is recognized as the down beat of the beatPerMeasure. 
       this.setState({
         count: 0,
-        cpm: cpm
+        userNumberInput: cpm
       });
 
       // However, if the metronome is not already playing, the cpm is just updated through the setState. 
     } else {
-      this.setState({ cpm });
+        this.setState({ userNumberInput: cpm });
     }
   }
   render(){
-    const { playing, cpm } = this.state;
+    const { playing, userNumberInput } = this.state;
 
     return (
       <div className="chirptronome">
         <div className="data">
           <Header />
           <main>
-            <Byline cpm={cpm} />
+            <Byline cpm={userNumberInput} />
             <form action="" onSubmit={this.handleSubmit}>
               <input
                 className="range"
                 type="range"
                 min="20"
                 max="260"
-                value={cpm}
+                value={this.state.userNumberInput}
+                id="userLog"
                 onChange={this.handleChange}
+                // onChange={this.handleUserNumberInput}
               />
               <div className="parent">
                 <label>
@@ -168,8 +186,8 @@ class App extends Component {
                       <Log
                         key={log.logId}
                         logId={log.logId}
-                        logTitle={log.logName}
-                        cpm={cpm}
+                        logTitle={log.logName.title}
+                        cpm={log.logName.tempo}
                       />
                     );
                   })}
