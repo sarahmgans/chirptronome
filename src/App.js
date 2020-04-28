@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
 import './App.css';
+
+import firebase from './firebase';
+
+import Log from './Log'
 import Header from './Header';
 import Byline from './Byline';
-import Form from './Form';
 import Button from './Button';
+// import Form from './Form';
 
 
 import chirp1 from './chirp1.wav';
@@ -11,18 +15,61 @@ import chirp2 from './chirp2.mp3';
 class App extends Component {
   constructor(){
     super();
-    // The state is initialized so that the playing begins at false, the count at 0, the chirps per minute at 80 and the chirps per measure at 4. 
+    // The state is initialized so that the playing begins at false, the count at 0, the chirps per minute at 80, the chirps per measure at 4, the logs an empty array and the user input an empty string.  
     this.state = {
       playing: false,
       count: 0,
       cpm: 80,
-      chirpsPerMeasure: 4
+      chirpsPerMeasure: 4,
+      logs: [],
+      userInput: ""
     }
-    
+
+    // console.log(this.state);
     // Audio files of bird sounds
     this.chirp1 = new Audio(chirp1);
     this.chirp2 = new Audio(chirp2);
   }
+
+  // grad the list of logs from our database
+  componentDidMount() {
+    // set up a listener to firebase
+    const dbRef = firebase.database().ref();
+    dbRef.on('value', (result) => {
+      // console.log(result.val())
+      const data = result.val();
+      // turn data from an object into an array
+      const logsArray = []
+      for(let key in data){
+        logsArray.push({logName: data[key], logId: key})
+      }
+      // console.log(logsArray);
+      this.setState({
+        logs: logsArray
+      })
+    })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    if (this.state.userInput !==''){
+      const dbRef = firebase.database().ref()
+      dbRef.push(this.state.userInput)
+      this.setState({
+        userInput:''
+      })
+    }
+  }
+
+  handleUserInput = (event) => {
+    // take event.target.value (what the user is typing) and put it into this.state.userInput
+    // console.log(event.target.value)
+
+    this.setState({
+      userInput: event.target.value
+    })
+  }
+
 
   chirp = () => {
     // If the metronome is on the downbeat of the four-beat pattern that is set in the state, chirp2 will play.
@@ -58,7 +105,7 @@ class App extends Component {
 
   // Allow the user to adjust the cpm through the number and range inputs.
   handleChange = event => {
-    const cpm = event.target.value;
+    const cpm = parseInt(event.target.value)
 
     // If the metronome is already playing and the user changes the cpm through the range or number input, the timer has to be cleared and this.timer has to be re-calculated.
     if (this.state.playing) {
@@ -76,18 +123,61 @@ class App extends Component {
       this.setState({ cpm });
     }
   }
-
   render(){
+    const { playing, cpm } = this.state;
+
     return (
       <div className="chirptronome">
         <div className="data">
-          <Header/>
+          <Header />
           <main>
-            <Byline cpm={this.state.cpm}/>
-            <Form handleChange={this.handleChange} cpm={this.state.cpm}/>
+            <Byline cpm={cpm} />
+            <form action="" onSubmit={this.handleSubmit}>
+              <input
+                className="range"
+                type="range"
+                min="20"
+                max="260"
+                value={cpm}
+                onChange={this.handleChange}
+              />
+              <div className="parent">
+                <label>
+                  <p>
+                    What{" "}
+                    <span aria-label="music" className="musicNotes" role="img">
+                      🎶
+                    </span>{" "}
+                    are you playing?
+                  </p>
+                  <input
+                    className="piece"
+                    type="text"
+                    placeholder="Title:"
+                    name="piece"
+                    value={this.state.userInput}
+                    id="userLog"
+                    onChange={this.handleUserInput}
+                  />
+                </label>
+                <button type="submit">Store</button>
+                <Button playing={playing} startAndStop={this.startAndStop} />
+                <ul>
+                  {this.state.logs.map((log) => {
+                    return (
+                      <Log
+                        key={log.logId}
+                        logId={log.logId}
+                        logTitle={log.logName}
+                        cpm={cpm}
+                      />
+                    );
+                  })}
+                </ul>
+              </div>
+            </form>
           </main>
         </div>
-        <Button playing={this.state.playing} startAndStop={this.startAndStop}/>
       </div>
     );
   }

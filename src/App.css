@@ -17,7 +17,7 @@ p span {
 
 p.chirps span {
   border-bottom: 3px solid #C94D46;
-  font-size: 30px;
+  font-size: 35px;
 }
 
 h1 {
@@ -35,7 +35,6 @@ h1 {
 
 .data input {
   width: 100%;
-  margin-bottom: 20px;
   text-align: center;
   border: 1px solid black;
   font-size: 40px;
@@ -52,10 +51,11 @@ input[type="number"] {
 label p {
   font-size: 30px;
   margin-bottom: 10px;
+  margin-top: 19px;
 }
 
 input[type="text"] {
-  width: 40%;
+  width: 60%;
   text-align: left;
   border: none;
   border-bottom: 1px solid black;
@@ -64,19 +64,28 @@ input[type="text"] {
   margin-top: 20px;
 }
 
-input[type="submit"] {
+button[type="submit"] {
   width: 25%;
   margin: 0 auto;
   margin-bottom: 30px;
-  font-size: 20px;
+  font-size: 18px;
   padding: 8px;
+  border: 1px solid #C94D46;
+  background-color: white;
+  transition: 0.3s;
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:focus-within {
+  background-color: #C94D46;
+  color: white;
 }
 
 input[type="range"] {
   width: 75%;
 }
 
-.chirptronome button {
+.chirptronome button.playing {
   background: #C94D46;
   padding: 20px 30px;
   border-radius: 20px;
@@ -86,6 +95,7 @@ input[type="range"] {
   border: none;
   font-family: 'Josefin Sans', cursive;
   transition: 0.3s;
+  margin: 0 auto;
   margin-bottom: 35px;
 }
 
@@ -96,4 +106,32 @@ input[type="range"] {
 .parent {
   display: flex;
   flex-direction: column;
+}
+
+ul li {
+  list-style-type: none;
+  text-align: center;
+  margin-bottom: 10px;
+  border: 1px solid black;
+  padding: 5px;
+  cursor: pointer;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+span.x {
+  display: inline-block;
+  font-size: 30px;
+}
+
+li p {
+  font-size: 23px;
+  margin: 10px;
+}
+
+span.bold {
+  font-size: 25px;
 }
