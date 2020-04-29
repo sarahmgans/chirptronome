@@ -4,13 +4,13 @@ import firebase from "./firebase";
 function Log(props) {
 
   const deleteItem = () => {
-    console.log(props.logId);
+    // console.log(props.logId);
     const itemRef = firebase.database().ref(props.logId);
     itemRef.remove();
   };
 
   return (
-    <li onClick={deleteItem}>
+    <li onClick={deleteItem} onKeyDown={deleteItem}>
       <p>
         <span className="bold">Title:</span> {props.logTitle}
       </p>

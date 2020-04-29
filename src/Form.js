@@ -4,7 +4,7 @@ function Form (props) {
   return(
     <form action="" onSubmit={props.handleSubmit}>
       <input
-        className="range"
+        className="slider"
         type="range"
         min="20"
         max="260"
@@ -13,8 +13,7 @@ function Form (props) {
         onChange={props.handleChange}
       />
       <div className="parent">
-        <label>
-          <p>What <span aria-label="music" className="musicNotes" role="img">🎶</span> are you playing?</p>
+          <p>What <span aria-label="music" className="musicNotes" role="img">  🎶 </span>  are you playing?</p>
           <input
             className="piece"
             type="text"
@@ -33,7 +32,6 @@ function Form (props) {
             id="userComp"
             onChange={props.handleCompInput}
           />
-        </label>
         <button type="submit">Store</button>
       </div>
     </form>
