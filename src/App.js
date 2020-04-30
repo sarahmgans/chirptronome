@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './App.css';
+import './Styles/App.scss'
 import swal from "sweetalert";
 
 import firebase from './firebase';
@@ -7,7 +7,6 @@ import firebase from './firebase';
 import Log from './Log'
 import Header from './Header';
 import Byline from './Byline';
-import Button from './Button';
 import Form from './Form';
 
 import chirp1 from './chirp1.wav';
@@ -116,8 +115,9 @@ class App extends Component {
     }));
   }
 
-  startAndStop = () => {
+  startAndStop = (e) => {
     // If the chirptronome is playing and you want it to stop, press the Stop button. This will stop it from playing by clearing the interval (timer) and setting the playing value to false. The Stop button will change back to a Start button (as directed by the ternary operator in the button element). 
+    e.preventDefault();
     if (this.state.playing) {
       clearInterval(this.timer);
       this.setState({
@@ -163,7 +163,7 @@ class App extends Component {
           <Header />
           <main>
             <Byline cpm={userNumberInput} />
-            <Form 
+            <Form
               handleSubmit={this.handleSubmit}
               userNumberInput={this.state.userNumberInput}
               handleChange={this.handleChange}
@@ -173,8 +173,10 @@ class App extends Component {
               handleCompInput={this.handleCompInput}
               chirpsPerMeasure={this.state.chirpsPerMeasure}
               handleMeterInput={this.handleMeterInput}
+              playing={playing}
+              startAndStop={this.startAndStop}
             />
-            <Button playing={playing} startAndStop={this.startAndStop} />
+            {/* <Button playing={playing} startAndStop={this.startAndStop} /> */}
             <ul>
               {this.state.logs.map((log) => {
                 return (

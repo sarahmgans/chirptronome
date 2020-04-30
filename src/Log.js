@@ -10,7 +10,7 @@ function Log(props) {
   };
 
   return (
-    <li onClick={deleteItem} onKeyDown={deleteItem}>
+    <li onClick={deleteItem} onKeyDown={deleteItem} tabIndex="0">
       <p>
         <span className="bold">Title:</span> {props.logTitle}
       </p>

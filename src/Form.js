@@ -88,13 +88,8 @@ function Form (props) {
         </label>
       </fieldset>
       <div className="parent">
-        <p>
-          What{" "}
-          <span aria-label="music" className="musicNotes" role="img">
-            {" "}
-            🎶{" "}
-          </span>{" "}
-          are you playing?
+        <p className="form">
+          What music are you playing?
         </p>
         <input
           className="piece"
@@ -114,8 +109,13 @@ function Form (props) {
           id="userComp"
           onChange={props.handleCompInput}
         />
+        <div className="buttonParent">
+          <button type="submit">Store</button>
+          <button className="playing" onClick={props.startAndStop}>
+            {props.playing ? "Stop" : "Play"}
+          </button>
+        </div>
       </div>
-      <button type="submit">Store</button>
     </form>
   );
 }
