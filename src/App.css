@@ -29,7 +29,7 @@ h1 {
   font-size: 70px;
   font-weight: 300;
   margin-top: 0;
-  margin-bottom: 22px;
+  margin-bottom: 0;
   padding-top: 22px;
   color: #373737;
   letter-spacing: 1.3px;
@@ -82,6 +82,7 @@ input.composer {
 
 input[type="range"] {
   width: 40%;
+  margin-bottom: 27px;
 }
 
 .chirptronome button.playing,
@@ -157,5 +158,44 @@ span.bold {
 
 .parent > p:nth-child(1) {
   margin-bottom: 10px;
+  margin-top: 40px;
 }
 
+fieldset {
+  width: 50%;
+  margin: 0 auto;
+  border: none;
+}
+
+input[type="radio"] {
+  opacity: 0.01;
+  position: absolute;
+  left: -1000px;
+}
+
+fieldset.radio label {
+  margin: 20px;
+  padding: 10px;
+}
+
+input[type="radio"]:focus+label,
+input[type="radio"]:checked+label {
+  background-color: #222e50;
+  color: white;
+}
+
+input[type="date"] {
+  background-color: transparent;
+  border: none;
+  margin-bottom: 20px;
+  font-size: 25px;
+  width: 20%;
+}
+
+.data > header:nth-child(1) > p:nth-child(2) {
+  margin-top: 20px;
+}
+
+.swal-footer {
+  text-align: center !important;
+}

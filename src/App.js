@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
+import swal from "sweetalert";
 
 import firebase from './firebase';
 
@@ -19,11 +20,12 @@ class App extends Component {
     this.state = {
       playing: false,
       count: 0,
-      chirpsPerMeasure: 4,
       logs: [],
       userInput: '',
       userCompInput: '',
-      userNumberInput: 80
+      userNumberInput: "80",
+      chirpsPerMeasure: "4",
+      // userDateInput: ''
     }
 
     // Audio files of bird sounds
@@ -54,29 +56,38 @@ class App extends Component {
   handleSubmit = (e) => {
     // putting info into firebase
     e.preventDefault()
-    if (this.state.userInput !=='' && this.state.userCompInput !==''){
+    if (this.state.userInput !=='' && this.state.userCompInput !=='' && this.state.userDate !== ''){
       const dbRef = firebase.database().ref()
       // object that will be in firebase
       const toSave = {
         title: this.state.userInput,
         composer: this.state.userCompInput,
         tempo: this.state.userNumberInput,
+        meter: this.state.chirpsPerMeasure,
+        // date: this.state.userDateInput
       }
 
       dbRef.push(toSave)
       
+      // Clears the two text inputs on store while maintaining the tempo and the meter.
       this.setState({
         userInput:'',
         userCompInput: '',
-        userNumberInput: 80
+        // userDateInput: ''
       })
+
     } else {
-      alert('Please go back and enter information for both the title and the composer!')
+      swal({
+        title: "Error!",
+        text: "Please go back and fill out all of the fields!",
+        icon: "error",
+        button: true,
+      });
     }
   }
 
   handleUserInput = (event) => {
-    // take event.target.value (what the user is typing) and put it into this.state.userInput
+    // take event.target.value (user's chosen values) and put them into the setState.[].
     this.setState({
       userInput: event.target.value
     })
@@ -87,6 +98,18 @@ class App extends Component {
       userCompInput: event.target.value
     })
   }
+
+  handleMeterInput = (event) => {
+    this.setState({
+      chirpsPerMeasure: event.target.value
+    })
+  }
+
+  // handleDateInput = (event) => {
+  //   this.setState({
+  //     userDateInput: event.target.value
+  //   })
+  // }
 
   chirp = () => {
     // If the metronome is on the downbeat of the four-beat pattern that is set in the state, chirp2 will play.
@@ -122,7 +145,7 @@ class App extends Component {
 
   // Allow the user to adjust the cpm through the range input.
   handleChange = event => {
-    const cpm = parseInt(event.target.value)
+    const cpm = event.target.value
 
     // If the metronome is already playing and the user changes the cpm through the range input, the timer has to be cleared and this.timer has to be re-calculated.
     if (this.state.playing) {
@@ -157,9 +180,13 @@ class App extends Component {
               handleUserInput={this.handleUserInput}
               userCompInput={this.state.userCompInput}
               handleCompInput={this.handleCompInput}
+              chirpsPerMeasure={this.state.chirpsPerMeasure}
+              handleMeterInput={this.handleMeterInput}
+              // userDateInput={this.userDateInput}
+              // handleDateInput={this.handleDateInput}
             />
             <Button playing={playing} startAndStop={this.startAndStop} />
-            <ul tabIndex="0">
+            <ul>
               {this.state.logs.map((log) => {
                 return (
                   <Log
@@ -168,6 +195,8 @@ class App extends Component {
                     logTitle={log.logName.title}
                     cpm={log.logName.tempo}
                     logComp={log.logName.composer}
+                    logMeter={log.logName.meter}
+                    // logDate={log.logName.date}
                   />
                 );
               })}
