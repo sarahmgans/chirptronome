@@ -1,4 +1,4 @@
-// Stylings by Daniel Stern at 'https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/'
+// Stylings for the range input by Daniel Stern at 'https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/'
 
 input[type=range] {
   -webkit-appearance: none; 
@@ -28,7 +28,6 @@ input[type=range]::-webkit-slider-thumb {
   border: 1px solid #000000;
   height: 36px;
   width: 16px;
-  border-radius: 3px;
   background: #ffffff;
   cursor: pointer;
   margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
@@ -41,7 +40,6 @@ input[type=range]::-moz-range-thumb {
   border: 1px solid #000000;
   height: 36px;
   width: 16px;
-  border-radius: 3px;
   background: #ffffff;
   cursor: pointer;
 }
@@ -52,7 +50,6 @@ input[type=range]::-ms-thumb {
   border: 1px solid #000000;
   height: 36px;
   width: 16px;
-  border-radius: 3px;
   background: #ffffff;
   cursor: pointer;
 }
@@ -131,7 +128,6 @@ input[type=range]::-webkit-slider-thumb {
   border: 1px solid #000000;
   height: 36px;
   width: 16px;
-  border-radius: 3px;
   background: #ffffff;
   cursor: pointer;
   -webkit-appearance: none;
@@ -154,7 +150,6 @@ input[type=range]::-moz-range-thumb {
   border: 1px solid #000000;
   height: 36px;
   width: 16px;
-  border-radius: 3px;
   background: #ffffff;
   cursor: pointer;
 }
@@ -184,7 +179,6 @@ input[type=range]::-ms-thumb {
   border: 1px solid #000000;
   height: 36px;
   width: 16px;
-  border-radius: 3px;
   background: #ffffff;
   cursor: pointer;
 }

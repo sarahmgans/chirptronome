@@ -271,7 +271,6 @@ input[type=range]::-webkit-slider-thumb {
   border: 1px solid #000000;
   height: 36px;
   width: 16px;
-  border-radius: 3px;
   background: #ffffff;
   cursor: pointer;
   margin-top: -14px;
@@ -287,7 +286,6 @@ input[type=range]::-moz-range-thumb {
   border: 1px solid #000000;
   height: 36px;
   width: 16px;
-  border-radius: 3px;
   background: #ffffff;
   cursor: pointer;
 }
@@ -298,7 +296,6 @@ input[type=range]::-ms-thumb {
   border: 1px solid #000000;
   height: 36px;
   width: 16px;
-  border-radius: 3px;
   background: #ffffff;
   cursor: pointer;
 }
@@ -387,7 +384,6 @@ input[type=range]::-webkit-slider-thumb {
   border: 1px solid #000000;
   height: 36px;
   width: 16px;
-  border-radius: 3px;
   background: #ffffff;
   cursor: pointer;
   -webkit-appearance: none;
@@ -413,7 +409,6 @@ input[type=range]::-moz-range-thumb {
   border: 1px solid #000000;
   height: 36px;
   width: 16px;
-  border-radius: 3px;
   background: #ffffff;
   cursor: pointer;
 }
@@ -447,7 +442,6 @@ input[type=range]::-ms-thumb {
   border: 1px solid #000000;
   height: 36px;
   width: 16px;
-  border-radius: 3px;
   background: #ffffff;
   cursor: pointer;
 }
@@ -473,8 +467,8 @@ p {
 }
 
 p span {
-  font-weight: 600;
-  font-size: 24px;
+  font-weight: 500;
+  font-size: 22px;
 }
 
 p.chirps {
@@ -509,7 +503,7 @@ h1 {
   margin-bottom: 21px;
   padding-top: 30px;
   color: #373737;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
 }
 
 h1 span.header {
@@ -587,7 +581,7 @@ button[type="submit"]:focus-within {
 }
 
 .chirptronome button.playing:hover {
-  background: #B45144;
+  background: #e23558;
 }
 
 .parent {
@@ -610,12 +604,21 @@ button[type="submit"]:focus-within {
 ul li {
   list-style-type: none;
   text-align: center;
-  border: 1px solid #373737;
   padding: 5px;
   cursor: pointer;
   width: 52%;
   margin: 0 auto;
   margin-top: 40px;
+  background-color: #3f3d56;
+  border-radius: 20px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+ul li:hover,
+ul li:focus-within {
+  -webkit-transform: scale(1.01);
+          transform: scale(1.01);
 }
 
 ul {
@@ -625,13 +628,16 @@ ul {
 
 span.x {
   display: inline-block;
-  font-size: 30px;
-  margin-bottom: 7px;
+  font-size: 45px;
+  margin-bottom: 5px;
+  color: white;
 }
 
 li p {
   font-size: 18px;
   margin: 15px;
+  color: white;
+  margin-bottom: 0px;
 }
 
 span.bold {
@@ -680,6 +686,7 @@ input[type="date"] {
 
 .data > header:nth-child(1) > p:nth-child(2) {
   margin-top: 22px;
+  letter-spacing: 1px;
 }
 
 .swal-footer {
@@ -710,5 +717,23 @@ img {
 
 .data > main:nth-child(2) > form:nth-child(2) {
   margin-top: 25px;
+}
+
+::-webkit-input-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder,
+::-webkit-input-placeholder {
+  color: darkgrey;
+  font-family: 'Montserrat';
+  text-transform: none;
+}
+
+::-webkit-input-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder,
+::placeholder {
+  color: darkgrey;
+  font-family: 'Montserrat';
+  text-transform: none;
 }
 /*# sourceMappingURL=App.css.map */
