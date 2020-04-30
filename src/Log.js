@@ -4,13 +4,19 @@ import firebase from "./firebase";
 function Log(props) {
 
   const deleteItem = () => {
-    // console.log(props.logId);
     const itemRef = firebase.database().ref(props.logId);
     itemRef.remove();
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      const itemRef = firebase.database().ref(props.logId);
+      itemRef.remove();
+    }
+  };
+
   return (
-    <li onClick={deleteItem} onKeyDown={deleteItem} tabIndex="0">
+    <li tabIndex="0">
       <p>
         <span className="bold">Title:</span> {props.logTitle}
       </p>
@@ -23,9 +29,24 @@ function Log(props) {
       <p>
         <span className="bold">Meter:</span> {props.logMeter}/4
       </p>
-      <span className="x">☒</span>
+      <button
+        className="replay"
+        onClick={() => props.setTempoMeter(props.logId)}
+        tabIndex="0"
+      >
+        Play me again!
+      </button>
+      <span
+        className="x"
+        onClick={deleteItem}
+        onKeyDown={handleKeyPress}
+        tabIndex="0"
+      >
+        ☒
+      </span>
     </li>
   );
 }
+
 
 export default Log;

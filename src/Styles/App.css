@@ -459,6 +459,16 @@ input[type="range"] {
   border: none;
 }
 
+input[type=text]:focus {
+  border-bottom: 1px solid #000;
+  -webkit-box-shadow: 0 1px 0 0 #000;
+          box-shadow: 0 1px 0 0 #000;
+}
+
+input[type=text]:focus + label {
+  color: #000;
+}
+
 p {
   font-size: 22px;
   font-family: 'Montserrat';
@@ -467,7 +477,7 @@ p {
 }
 
 p span {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 22px;
 }
 
@@ -533,7 +543,7 @@ label p {
 }
 
 input[type="text"] {
-  width: 30%;
+  width: 365px;
   text-align: left;
   border: none;
   border-bottom: 1px solid #373737;
@@ -566,6 +576,7 @@ button[type="submit"] {
 
 .chirptronome button.playing {
   margin-bottom: 0;
+  margin-top: 45px;
 }
 
 button[type="submit"] {
@@ -611,14 +622,7 @@ ul li {
   margin-top: 40px;
   background-color: #3f3d56;
   border-radius: 20px;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-ul li:hover,
-ul li:focus-within {
-  -webkit-transform: scale(1.01);
-          transform: scale(1.01);
+  position: relative;
 }
 
 ul {
@@ -627,17 +631,17 @@ ul {
 }
 
 span.x {
-  display: inline-block;
-  font-size: 45px;
-  margin-bottom: 5px;
-  color: white;
+  font-size: 39px;
+  color: #ff6584;
+  position: absolute;
+  top: 5px;
+  right: 12px;
 }
 
 li p {
   font-size: 18px;
   margin: 15px;
   color: white;
-  margin-bottom: 0px;
 }
 
 span.bold {
@@ -676,6 +680,12 @@ input[type="radio"]:checked + label {
   border-radius: 50%;
 }
 
+input[type="radio"]:active {
+  background-color: #3f3d56;
+  color: white;
+  border-radius: 50%;
+}
+
 input[type="date"] {
   background-color: transparent;
   border: none;
@@ -697,7 +707,7 @@ input[type="date"] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 img {
@@ -735,5 +745,23 @@ img {
   color: darkgrey;
   font-family: 'Montserrat';
   text-transform: none;
+}
+
+button.replay {
+  font-family: 'Montserrat';
+  border: none;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: #6c63ff;
+  color: white;
+  font-weight: 300;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+button.replay:hover, button.replay:focus-within, button.replay:active {
+  background-color: #3f35f9;
 }
 /*# sourceMappingURL=App.css.map */

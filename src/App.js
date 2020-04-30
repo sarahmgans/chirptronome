@@ -154,6 +154,27 @@ class App extends Component {
         this.setState({ userNumberInput: cpm });
     }
   }
+
+  setTempoMeter = (logId) => {
+    const dbRef = firebase.database().ref(logId);
+    dbRef.on('value', (result) => {
+      const data = result.val();
+    
+      const storedTempo = data ? data.tempo : "80"
+      const storedMeter = data ? data.meter : "4"
+      const storedCompInput = data ? data.composer : ''
+      const storedTitleInput = data ? data.title : ''
+      console.log(storedTempo, storedMeter)
+      
+        this.setState({
+        userNumberInput: storedTempo,
+        chirpsPerMeasure: storedMeter,
+        userCompInput: storedCompInput,
+        userInput: storedTitleInput
+      })
+    }
+  )}
+
   render(){
     const { playing, userNumberInput } = this.state;
 
@@ -176,7 +197,7 @@ class App extends Component {
               playing={playing}
               startAndStop={this.startAndStop}
             />
-            {/* <Button playing={playing} startAndStop={this.startAndStop} /> */}
+
             <ul>
               {this.state.logs.map((log) => {
                 return (
@@ -187,6 +208,7 @@ class App extends Component {
                     cpm={log.logName.tempo}
                     logComp={log.logName.composer}
                     logMeter={log.logName.meter}
+                    setTempoMeter={this.setTempoMeter}
                   />
                 );
               })}

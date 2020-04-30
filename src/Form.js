@@ -87,14 +87,15 @@ function Form (props) {
           1/4
         </label>
       </fieldset>
+      <button className="playing" onClick={props.startAndStop}>
+        {props.playing ? "Stop" : "Play"}
+      </button>
       <div className="parent">
-        <p className="form">
-          What music are you playing?
-        </p>
+        <p className="form">What music are you playing?</p>
         <input
           className="piece"
           type="text"
-          placeholder="Title:"
+          placeholder="Title"
           name="piece"
           value={props.userInput}
           id="userLog"
@@ -103,7 +104,7 @@ function Form (props) {
         <input
           className="composer"
           type="text"
-          placeholder="Composer:"
+          placeholder="Composer"
           name="composer"
           value={props.userCompInput}
           id="userComp"
@@ -111,9 +112,6 @@ function Form (props) {
         />
         <div className="buttonParent">
           <button type="submit">Store</button>
-          <button className="playing" onClick={props.startAndStop}>
-            {props.playing ? "Stop" : "Play"}
-          </button>
         </div>
       </div>
     </form>
