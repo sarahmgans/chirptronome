@@ -23,9 +23,6 @@ function Log(props) {
       <p>
         <span className="bold">Meter:</span> {props.logMeter}/4
       </p>
-      {/* <p>
-        <span className="bold">Date:</span> {props.logDate}
-      </p> */}
       <span className="x">☒</span>
     </li>
   );

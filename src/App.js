@@ -24,8 +24,7 @@ class App extends Component {
       userInput: '',
       userCompInput: '',
       userNumberInput: "80",
-      chirpsPerMeasure: "4",
-      // userDateInput: ''
+      chirpsPerMeasure: "4"
     }
 
     // Audio files of bird sounds
@@ -63,8 +62,7 @@ class App extends Component {
         title: this.state.userInput,
         composer: this.state.userCompInput,
         tempo: this.state.userNumberInput,
-        meter: this.state.chirpsPerMeasure,
-        // date: this.state.userDateInput
+        meter: this.state.chirpsPerMeasure
       }
 
       dbRef.push(toSave)
@@ -72,16 +70,15 @@ class App extends Component {
       // Clears the two text inputs on store while maintaining the tempo and the meter.
       this.setState({
         userInput:'',
-        userCompInput: '',
-        // userDateInput: ''
+        userCompInput: ''
       })
 
     } else {
       swal({
         title: "Error!",
-        text: "Please go back and fill out all of the fields!",
+        text: "Please fill out all of the inputs",
         icon: "error",
-        button: true,
+        button: true
       });
     }
   }
@@ -104,12 +101,6 @@ class App extends Component {
       chirpsPerMeasure: event.target.value
     })
   }
-
-  // handleDateInput = (event) => {
-  //   this.setState({
-  //     userDateInput: event.target.value
-  //   })
-  // }
 
   chirp = () => {
     // If the metronome is on the downbeat of the four-beat pattern that is set in the state, chirp2 will play.
@@ -182,8 +173,6 @@ class App extends Component {
               handleCompInput={this.handleCompInput}
               chirpsPerMeasure={this.state.chirpsPerMeasure}
               handleMeterInput={this.handleMeterInput}
-              // userDateInput={this.userDateInput}
-              // handleDateInput={this.handleDateInput}
             />
             <Button playing={playing} startAndStop={this.startAndStop} />
             <ul>
@@ -196,7 +185,6 @@ class App extends Component {
                     cpm={log.logName.tempo}
                     logComp={log.logName.composer}
                     logMeter={log.logName.meter}
-                    // logDate={log.logName.date}
                   />
                 );
               })}
