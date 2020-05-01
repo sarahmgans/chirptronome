@@ -11,8 +11,7 @@ function Header () {
           </h1>
         </div>
         <p>
-          Why play with a <span>click</span> when you can play with a{" "}
-          <span>chick?</span>
+          Why play with a <span>click</span> when you can play with a <span>chick?</span>
         </p>
       </header>
     );

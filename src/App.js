@@ -8,6 +8,7 @@ import Log from './Log'
 import Header from './Header';
 import Byline from './Byline';
 import Form from './Form';
+import Footer from './Footer';
 
 import chirp1 from './chirp1.wav';
 import chirp2 from './chirp2.mp3';
@@ -75,7 +76,7 @@ class App extends Component {
     } else {
       swal({
         title: "Error!",
-        text: "Please fill out all of the inputs",
+        text: "Please fill all of the fields!",
         icon: "error",
         button: true
       });
@@ -164,7 +165,6 @@ class App extends Component {
       const storedMeter = data ? data.meter : "4"
       const storedCompInput = data ? data.composer : ''
       const storedTitleInput = data ? data.title : ''
-      console.log(storedTempo, storedMeter)
       
         this.setState({
         userNumberInput: storedTempo,
@@ -180,7 +180,7 @@ class App extends Component {
 
     return (
       <div className="chirptronome">
-        <div className="data">
+        <div className="data wrapper">
           <Header />
           <main>
             <Byline cpm={userNumberInput} />
@@ -215,6 +215,7 @@ class App extends Component {
             </ul>
           </main>
         </div>
+        <Footer />
       </div>
     );
   }

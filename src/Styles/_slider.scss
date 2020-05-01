@@ -190,6 +190,21 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 input[type="range"] {
-  width: 40%;
+  width: 600px;
   border: none;
+}
+
+input[type='range']::-moz-focus-outer { border: 0; }
+
+.parent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 35px;
+}
+
+.parent > p:nth-child(1) {
+  margin-bottom: 10px;
+  margin-top: 10px;
 }

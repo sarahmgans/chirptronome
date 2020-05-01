@@ -1,9 +1,117 @@
-
-  input[type=text]:focus {
-    border-bottom: 1px solid #000;
-    box-shadow: 0 1px 0 0 #000;
+fieldset.radio label {
+  margin: 20px;
+  padding: 10px;
+  font-size: 17px;
+  p {
+    font-size: 30px;
+    margin-bottom: 10px;
+    margin-top: 19px;
   }
+}  
 
-  input[type=text]:focus + label {
-    color: #000;
+input[type="radio"] {
+  opacity: 0.01;
+  position: absolute;
+  left: -1000px;
+  &:focus+label,
+  &:checked+label, 
+  &:active {
+    background-color: #3f3d56;
+    color: white;
+    border-radius: 50%;
   }
+}
+
+p.form {
+  font-family: 'Montserrat';
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+fieldset {
+  width: 50%;
+  margin: 0 auto;
+  border: none;
+  margin-top: 30px;
+}
+
+input.composer {
+  margin-top: 13px;
+}
+
+input[type="text"] {
+  width: 365px;
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid #373737;
+  margin-bottom: 30px;
+  font-size: 20px;
+  margin-top: 20px;
+  background-color: transparent;
+  color: #373737;
+  font-family: 'Montserrat';
+  &:focus {
+    border-bottom: 1px solid #373737;
+    box-shadow: 0 1px 0 0 #373737;
+  &:focus + label {
+    color: #373737;
+    }
+  }
+}
+
+::-webkit-input-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder,
+::placeholder {
+  color: darkgrey;
+  font-family: 'Montserrat';
+  text-transform: none;
+}
+
+.buttonParent {
+  display: flex;
+  margin-top: 20px;
+}
+
+.chirptronome button.playing,
+button[type="submit"] {
+  background: #ff6584;
+  padding: 11px 18px;
+  width: 170px;
+  color: #F2F4F3;
+  font-size: 27px;
+  border: none;
+  font-family: 'Montserrat';
+  transition: 0.3s;
+  margin: 0 auto;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.chirptronome button.playing {
+  margin-bottom: 0;
+  margin-top: 45px;
+  &:hover {
+    background: #e23558;
+  }
+}
+
+button[type="submit"] {
+  transition: 0.3s;
+  background-color: #F2F4F3;
+  color: #ff6584;
+  &:hover,
+  &:focus-within {
+    background-color: #DADCDB;
+  }
+}
+
+.data > main:nth-child(2) > form:nth-child(2) {
+  margin-top: 25px;
+}
+
+.swal-footer {
+  text-align: center;
+}
+
+
