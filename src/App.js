@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Styles/App.scss'
 import swal from "sweetalert";
-
+// import { Link, animateScroll as scroll } from "react-scroll";
 import firebase from './firebase';
 
 import Log from './Log'
@@ -179,7 +179,7 @@ class App extends Component {
     const { playing, userNumberInput } = this.state;
 
     return (
-      <div className="chirptronome">
+      <div className="chirptronome" id="top">
         <div className="data wrapper">
           <Header />
           <main>
@@ -215,7 +215,7 @@ class App extends Component {
             </ul>
           </main>
         </div>
-        <Footer />
+        <Footer/>
       </div>
     );
   }

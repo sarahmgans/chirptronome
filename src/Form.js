@@ -7,8 +7,8 @@ function Form (props) {
         <input
           className="slider"
           type="range"
-          min="20"
-          max="260"
+          min="40"
+          max="210"
           value={props.userNumberInput}
           id="userLog"
           onChange={props.handleChange}
@@ -111,7 +111,8 @@ function Form (props) {
           onChange={props.handleCompInput}
         />
         <div className="buttonParent">
-          <button type="submit">Store</button>
+          <button type="submit"
+          >Store</button>
         </div>
       </div>
     </form>

@@ -238,6 +238,7 @@ html {
 
 html {
   font-size: 100%;
+  scroll-behavior: smooth;
 }
 
 img {
@@ -252,6 +253,7 @@ body {
   color: #373737;
   font-family: 'Montserrat';
   font-weight: 300;
+  background-color: #F2F3AE;
 }
 
 .wrapper {
@@ -262,9 +264,7 @@ body {
 
 .chirptronome {
   text-align: center;
-  max-width: 100%;
   margin: 0 auto;
-  background-color: #F2F3AE;
 }
 
 input[type=range] {
@@ -514,12 +514,7 @@ fieldset.radio label {
   margin: 20px;
   padding: 10px;
   font-size: 17px;
-}
-
-fieldset.radio label p {
-  font-size: 30px;
-  margin-bottom: 10px;
-  margin-top: 19px;
+  font-family: 'Open Sans';
 }
 
 input[type="radio"] {
@@ -734,6 +729,7 @@ ul li {
   background-color: #3f3d56;
   border-radius: 20px;
   position: relative;
+  padding-bottom: 30px;
 }
 
 ul li p {
@@ -761,21 +757,24 @@ span.x:hover, span.x:focus-within {
   color: #e23558;
 }
 
-button.replay {
+a.replay {
   font-family: 'Montserrat';
   border: none;
   text-transform: uppercase;
   padding: 10px 20px;
-  margin-top: 10px;
-  margin-bottom: 20px;
   background-color: #6c63ff;
   color: white;
   font-weight: 300;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+  text-decoration: none;
 }
 
-button.replay:hover, button.replay:focus-within, button.replay:active {
+a.replay:hover, a.replay:focus-within, a.replay:active {
   background-color: #3f35f9;
+}
+
+.data > main:nth-child(2) > ul:nth-child(3) > li:nth-child(1) > p:nth-child(4) {
+  margin-bottom: 27px;
 }
 /*# sourceMappingURL=App.css.map */

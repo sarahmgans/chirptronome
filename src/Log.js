@@ -29,13 +29,13 @@ function Log(props) {
       <p>
         <span className="bold">Meter:</span> {props.logMeter}/4
       </p>
-      <button
+      <a href="#top"
         className="replay"
         onClick={() => props.setTempoMeter(props.logId)}
         tabIndex="0"
       >
         Play me again!
-      </button>
+      </a>
       <span
         className="x"
         onClick={deleteItem}
