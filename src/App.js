@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './Styles/App.scss'
 import swal from "sweetalert";
-// import { Link, animateScroll as scroll } from "react-scroll";
 import firebase from './firebase';
 
 import Log from './Log'
@@ -83,24 +82,32 @@ class App extends Component {
     }
   }
 
-  handleUserInput = (event) => {
-    // take event.target.value (user's chosen values) and put them into the setState.[].
+  handleInput = (event, state) => {
     this.setState({
-      userInput: event.target.value
+      [state]: event.target.value
     })
+    console.log(state)
   }
 
-  handleCompInput = (event) => {
-    this.setState({
-      userCompInput: event.target.value
-    })
-  }
 
-  handleMeterInput = (event) => {
-    this.setState({
-      chirpsPerMeasure: event.target.value
-    })
-  }
+  // handleUserInput = (event) => {
+  //   // take event.target.value (user's chosen values) and put them into the setState.[].
+  //   this.setState({
+  //     userInput: event.target.value
+  //   })
+  // }
+
+  // handleCompInput = (event) => {
+  //   this.setState({
+  //     userCompInput: event.target.value
+  //   })
+  // }
+
+  // handleMeterInput = (event) => {
+  //   this.setState({
+  //     chirpsPerMeasure: event.target.value
+  //   })
+  // }
 
   chirp = () => {
     // If the metronome is on the downbeat of the four-beat pattern that is set in the state, chirp2 will play.
@@ -185,15 +192,14 @@ class App extends Component {
           <main>
             <Byline cpm={userNumberInput} />
             <Form
+              handleInput={(e, state) => this.handleInput(e, state)
+              }
               handleSubmit={this.handleSubmit}
               userNumberInput={this.state.userNumberInput}
               handleChange={this.handleChange}
               userInput={this.state.userInput}
-              handleUserInput={this.handleUserInput}
               userCompInput={this.state.userCompInput}
-              handleCompInput={this.handleCompInput}
               chirpsPerMeasure={this.state.chirpsPerMeasure}
-              handleMeterInput={this.handleMeterInput}
               playing={playing}
               startAndStop={this.startAndStop}
             />
@@ -223,3 +229,20 @@ class App extends Component {
 
 export default App;
 
+// Outlines of elements when tabbing (radio buttons and slider) is it necessary/preffered
+// What does “React ‘knows’ about all DOM changes (bind your inputs!)” mean
+// Why do I have empty space at the bottom when it changes to ipad
+// Make labels of radio buttons circles
+
+// fieldset.radio label {
+// height: 45px;
+// display: flex;
+// min-height: ;
+// width: 45px;
+// justify-content: center;
+// align-items: center;
+// }
+// Element
+// .radio {
+// display: flex;
+// }

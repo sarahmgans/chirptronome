@@ -8,11 +8,11 @@ ul {
     cursor: pointer;
     width: 52%;
     margin: 0 auto;
-    margin-top: 40px;
+    margin-top: 50px;
     background-color: #3f3d56;
     border-radius: 20px;
     position: relative;
-    padding-bottom: 30px;
+    padding-bottom: 35px;
     p {
       font-size: 18px;
       margin: 15px;
@@ -20,6 +20,10 @@ ul {
       text-transform: none;
     }
   }
+}
+
+ul li p.last {
+  margin-bottom: 27px;
 }
 
 span.bold {
@@ -57,7 +61,5 @@ a.replay {
   }
 }
 
-.data > main:nth-child(2) > ul:nth-child(3) > li:nth-child(1) > p:nth-child(4) {
-  margin-bottom: 27px;
-}
+
 

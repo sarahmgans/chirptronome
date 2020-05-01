@@ -484,10 +484,6 @@ input[type="range"] {
   border: none;
 }
 
-input[type='range']::-moz-focus-outer {
-  border: 0;
-}
-
 .parent {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -510,11 +506,27 @@ input[type='range']::-moz-focus-outer {
   margin-top: 10px;
 }
 
+.radio {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 fieldset.radio label {
   margin: 20px;
   padding: 10px;
   font-size: 17px;
-  font-family: 'Open Sans';
+  height: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 45px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 input[type="radio"] {
@@ -725,11 +737,11 @@ ul li {
   cursor: pointer;
   width: 52%;
   margin: 0 auto;
-  margin-top: 40px;
+  margin-top: 50px;
   background-color: #3f3d56;
   border-radius: 20px;
   position: relative;
-  padding-bottom: 30px;
+  padding-bottom: 35px;
 }
 
 ul li p {
@@ -737,6 +749,10 @@ ul li p {
   margin: 15px;
   color: white;
   text-transform: none;
+}
+
+ul li p.last {
+  margin-bottom: 27px;
 }
 
 span.bold {
@@ -772,9 +788,5 @@ a.replay {
 
 a.replay:hover, a.replay:focus-within, a.replay:active {
   background-color: #3f35f9;
-}
-
-.data > main:nth-child(2) > ul:nth-child(3) > li:nth-child(1) > p:nth-child(4) {
-  margin-bottom: 27px;
 }
 /*# sourceMappingURL=App.css.map */

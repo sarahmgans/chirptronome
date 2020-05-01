@@ -21,10 +21,10 @@ function Form (props) {
           value="6"
           checked={props.chirpsPerMeasure === "6"}
           id="6/4"
-          onChange={props.handleMeterInput}
+          onChange={(e) => props.handleInput(e, "chirpsPerMeasure")}
         />
         <label for="6/4" className="6/4">
-          6/4
+          <span>6/4</span>
         </label>
 
         <input
@@ -33,10 +33,10 @@ function Form (props) {
           value="5"
           checked={props.chirpsPerMeasure === "5"}
           id="5/4"
-          onChange={props.handleMeterInput}
+          onChange={(e) => props.handleInput(e, "chirpsPerMeasure")}
         />
         <label for="5/4" className="5/4">
-          5/4
+          <span>5/4</span>
         </label>
 
         <input
@@ -45,10 +45,10 @@ function Form (props) {
           value="4"
           checked={props.chirpsPerMeasure === "4"}
           id="4/4"
-          onChange={props.handleMeterInput}
+          onChange={(e) => props.handleInput(e, "chirpsPerMeasure")}
         />
         <label for="4/4" className="4/4">
-          4/4
+          <span>4/4</span>
         </label>
 
         <input
@@ -57,10 +57,10 @@ function Form (props) {
           value="3"
           checked={props.chirpsPerMeasure === "3"}
           id="3/4"
-          onChange={props.handleMeterInput}
+          onChange={(e) => props.handleInput(e, "chirpsPerMeasure")}
         />
         <label for="3/4" className="3/4">
-          3/4
+          <span>3/4</span>
         </label>
 
         <input
@@ -69,10 +69,10 @@ function Form (props) {
           value="2"
           checked={props.chirpsPerMeasure === "2"}
           id="2/4"
-          onChange={props.handleMeterInput}
+          onChange={(e) => props.handleInput(e, "chirpsPerMeasure")}
         />
         <label for="2/4" className="2/4">
-          2/4
+          <span>2/4</span>
         </label>
 
         <input
@@ -81,10 +81,10 @@ function Form (props) {
           value="1"
           checked={props.chirpsPerMeasure === "1"}
           id="noMeter"
-          onChange={props.handleMeterInput}
+          onChange={(e) => props.handleInput(e, "chirpsPerMeasure")}
         />
         <label for="noMeter" className="1/4">
-          1/4
+          <span>1/4</span>
         </label>
       </fieldset>
       <button className="playing" onClick={props.startAndStop}>
@@ -99,7 +99,7 @@ function Form (props) {
           name="piece"
           value={props.userInput}
           id="userLog"
-          onChange={props.handleUserInput}
+          onChange={(e) => props.handleInput(e, "userInput")}
         />
         <input
           className="composer"
@@ -108,11 +108,10 @@ function Form (props) {
           name="composer"
           value={props.userCompInput}
           id="userComp"
-          onChange={props.handleCompInput}
+          onChange={(e) => props.handleInput(e, "userCompInput")}
         />
         <div className="buttonParent">
-          <button type="submit"
-          >Store</button>
+          <button type="submit">Store</button>
         </div>
       </div>
     </form>

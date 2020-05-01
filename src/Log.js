@@ -26,7 +26,7 @@ function Log(props) {
       <p>
         <span className="bold">Tempo:</span> {props.cpm} Chirps per Minute
       </p>
-      <p>
+      <p className="last">
         <span className="bold">Meter:</span> {props.logMeter}/4
       </p>
       <a href="#top"

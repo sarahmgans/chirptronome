@@ -1,8 +1,16 @@
+.radio {
+display: flex;
+}
+
 fieldset.radio label {
   margin: 20px;
   padding: 10px;
   font-size: 17px;
-  font-family: 'Open Sans'
+  height: 45px;
+  display: flex;
+  width: 45px;
+  justify-content: center;
+  align-items: center;
 }  
 
 input[type="radio"] {
@@ -110,4 +118,13 @@ button[type="submit"] {
   text-align: center;
 }
 
+// Outlines of elements when tabbing (radio buttons and slider) is it necessary/preffered
+// What does “React ‘knows’ about all DOM changes (bind your inputs!)” mean
+// Why do I have empty space at the bottom when it changes to ipad
+// Make labels of radio buttons circles
+
+
+
+// Element
+// 
 
