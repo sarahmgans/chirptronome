@@ -34,6 +34,13 @@ input[type=range]::-webkit-slider-thumb {
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
 }
 
+input[type="range"]:active::-moz-range-thumb,
+input[type="range"]:focus::-moz-range-thumb,
+input[type="range"]:active::-webkit-slider-thumb, 
+input[type="range"]:focus::-webkit-slider-thumb {
+  background:#ff6584;
+}
+
 /* All the same stuff for Firefox */
 input[type=range]::-moz-range-thumb {
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
@@ -194,17 +201,24 @@ input[type="range"] {
   border: none;
 }
 
-// input[type='range']::-moz-focus-outer { border: 0; }
-
 .parent {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 35px;
+  margin-top: 50px;
+}
+
+.parentTwo {
+   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
 }
 
 .parent > p:nth-child(1) {
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin-top: 15px;
 }
+
+input[type="range"]::-moz-focus-outer { border: 0; }

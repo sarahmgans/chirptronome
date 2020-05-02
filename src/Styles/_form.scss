@@ -1,5 +1,6 @@
 .radio {
 display: flex;
+justify-content: center;
 }
 
 fieldset.radio label {
@@ -19,7 +20,8 @@ input[type="radio"] {
   left: -1000px;
   &:focus+label,
   &:checked+label, 
-  &:active {
+  &:active,
+  &:focus-within {
     background-color: #3f3d56;
     color: white;
     border-radius: 50%;
@@ -36,11 +38,7 @@ fieldset {
   width: 50%;
   margin: 0 auto;
   border: none;
-  margin-top: 30px;
-}
-
-input.composer {
-  margin-top: 13px;
+  margin-top: 15px;
 }
 
 input[type="text"] {
@@ -54,6 +52,8 @@ input[type="text"] {
   background-color: transparent;
   color: #373737;
   font-family: 'Montserrat';
+  padding-top: 5px;
+  padding-bottom: 5px;
   &:focus {
     border-bottom: 1px solid #373737;
     box-shadow: 0 1px 0 0 #373737;
@@ -63,18 +63,18 @@ input[type="text"] {
   }
 }
 
-::-webkit-input-placeholder,
-::-moz-placeholder,
-:-ms-input-placeholder,
-::placeholder {
-  color: darkgrey;
-  font-family: 'Montserrat';
-  text-transform: none;
+input.composer {
+  margin-top: 13px;
+  margin-bottom: 39px;
 }
 
 .buttonParent {
   display: flex;
   margin-top: 20px;
+}
+
+.buttonParent > button:nth-child(1) {
+  margin-bottom: 19px;
 }
 
 .chirptronome button.playing,
@@ -93,8 +93,8 @@ button[type="submit"] {
 }
 
 .chirptronome button.playing {
-  margin-bottom: 0;
-  margin-top: 45px;
+  margin-bottom: 15px;
+  margin-top: 22px;
   &:hover {
     background: #e23558;
   }
@@ -118,13 +118,9 @@ button[type="submit"] {
   text-align: center;
 }
 
-// Outlines of elements when tabbing (radio buttons and slider) is it necessary/preffered
-// What does “React ‘knows’ about all DOM changes (bind your inputs!)” mean
-// Why do I have empty space at the bottom when it changes to ipad
-// Make labels of radio buttons circles
+.parent > p:nth-child(1) {
+  margin-bottom: 20px;
+}
 
 
-
-// Element
-// 
 

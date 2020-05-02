@@ -82,32 +82,13 @@ class App extends Component {
     }
   }
 
+  // A function that will be used for the states chirpsPerMeasure, userCompInput and userInput.
   handleInput = (event, state) => {
     this.setState({
       [state]: event.target.value
     })
     console.log(state)
   }
-
-
-  // handleUserInput = (event) => {
-  //   // take event.target.value (user's chosen values) and put them into the setState.[].
-  //   this.setState({
-  //     userInput: event.target.value
-  //   })
-  // }
-
-  // handleCompInput = (event) => {
-  //   this.setState({
-  //     userCompInput: event.target.value
-  //   })
-  // }
-
-  // handleMeterInput = (event) => {
-  //   this.setState({
-  //     chirpsPerMeasure: event.target.value
-  //   })
-  // }
 
   chirp = () => {
     // If the metronome is on the downbeat of the four-beat pattern that is set in the state, chirp2 will play.
@@ -165,9 +146,10 @@ class App extends Component {
 
   setTempoMeter = (logId) => {
     const dbRef = firebase.database().ref(logId);
-    dbRef.on('value', (result) => {
-      const data = result.val();
-    
+    dbRef.on('value', (item) => {
+      const data = item.val();
+      console.log({logId})
+
       const storedTempo = data ? data.tempo : "80"
       const storedMeter = data ? data.meter : "4"
       const storedCompInput = data ? data.composer : ''
@@ -229,20 +211,4 @@ class App extends Component {
 
 export default App;
 
-// Outlines of elements when tabbing (radio buttons and slider) is it necessary/preffered
-// What does “React ‘knows’ about all DOM changes (bind your inputs!)” mean
-// Why do I have empty space at the bottom when it changes to ipad
-// Make labels of radio buttons circles
 
-// fieldset.radio label {
-// height: 45px;
-// display: flex;
-// min-height: ;
-// width: 45px;
-// justify-content: center;
-// align-items: center;
-// }
-// Element
-// .radio {
-// display: flex;
-// }

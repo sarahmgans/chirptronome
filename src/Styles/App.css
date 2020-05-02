@@ -305,6 +305,13 @@ input[type=range]::-webkit-slider-thumb {
   /* Add cool effects to your sliders! */
 }
 
+input[type="range"]:active::-moz-range-thumb,
+input[type="range"]:focus::-moz-range-thumb,
+input[type="range"]:active::-webkit-slider-thumb,
+input[type="range"]:focus::-webkit-slider-thumb {
+  background: #ff6584;
+}
+
 /* All the same stuff for Firefox */
 input[type=range]::-moz-range-thumb {
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
@@ -498,18 +505,41 @@ input[type="range"] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 35px;
+  margin-top: 50px;
+}
+
+.parentTwo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 25px;
 }
 
 .parent > p:nth-child(1) {
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin-top: 15px;
+}
+
+input[type="range"]::-moz-focus-outer {
+  border: 0;
 }
 
 .radio {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 fieldset.radio label {
@@ -536,7 +566,7 @@ input[type="radio"] {
 }
 
 input[type="radio"]:focus + label,
-input[type="radio"]:checked + label, input[type="radio"]:active {
+input[type="radio"]:checked + label, input[type="radio"]:active, input[type="radio"]:focus-within {
   background-color: #3f3d56;
   color: white;
   border-radius: 50%;
@@ -552,11 +582,7 @@ fieldset {
   width: 50%;
   margin: 0 auto;
   border: none;
-  margin-top: 30px;
-}
-
-input.composer {
-  margin-top: 13px;
+  margin-top: 15px;
 }
 
 input[type="text"] {
@@ -570,6 +596,8 @@ input[type="text"] {
   background-color: transparent;
   color: #373737;
   font-family: 'Montserrat';
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 input[type="text"]:focus {
@@ -582,22 +610,9 @@ input[type="text"]:focus:focus + label {
   color: #373737;
 }
 
-::-webkit-input-placeholder,
-::-moz-placeholder,
-:-ms-input-placeholder,
-::-webkit-input-placeholder {
-  color: darkgrey;
-  font-family: 'Montserrat';
-  text-transform: none;
-}
-
-::-webkit-input-placeholder,
-::-moz-placeholder,
-:-ms-input-placeholder,
-::placeholder {
-  color: darkgrey;
-  font-family: 'Montserrat';
-  text-transform: none;
+input.composer {
+  margin-top: 13px;
+  margin-bottom: 39px;
 }
 
 .buttonParent {
@@ -605,6 +620,10 @@ input[type="text"]:focus:focus + label {
   display: -ms-flexbox;
   display: flex;
   margin-top: 20px;
+}
+
+.buttonParent > button:nth-child(1) {
+  margin-bottom: 19px;
 }
 
 .chirptronome button.playing,
@@ -624,8 +643,8 @@ button[type="submit"] {
 }
 
 .chirptronome button.playing {
-  margin-bottom: 0;
-  margin-top: 45px;
+  margin-bottom: 15px;
+  margin-top: 22px;
 }
 
 .chirptronome button.playing:hover {
@@ -651,6 +670,10 @@ button[type="submit"]:hover, button[type="submit"]:focus-within {
   text-align: center;
 }
 
+.parent > p:nth-child(1) {
+  margin-bottom: 20px;
+}
+
 .headerParent {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -662,8 +685,8 @@ button[type="submit"]:hover, button[type="submit"]:focus-within {
 
 img {
   width: 126px;
-  margin-top: -11px;
-  margin-right: 29px;
+  margin-top: 0px;
+  margin-right: 13px;
 }
 
 h1 {
@@ -673,7 +696,7 @@ h1 {
   font-size: 90px;
   margin-top: 0;
   margin-bottom: 21px;
-  padding-top: 30px;
+  padding-top: 36px;
   color: #373737;
   letter-spacing: 2px;
 }
@@ -715,7 +738,7 @@ p.chirps span {
 
 footer p {
   font-size: 16px;
-  margin-top: 50px;
+  margin-top: 39px;
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #3f3d56;
@@ -723,6 +746,7 @@ footer p {
   color: white;
   letter-spacing: 1px;
   font-weight: 300;
+  width: 100%;
 }
 
 ul {
@@ -735,9 +759,9 @@ ul li {
   text-align: center;
   padding: 5px;
   cursor: pointer;
-  width: 52%;
+  width: 55%;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 39px;
   background-color: #3f3d56;
   border-radius: 20px;
   position: relative;

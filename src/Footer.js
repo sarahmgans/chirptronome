@@ -3,7 +3,7 @@ import React from "react";
 function Footer() {
   return (
     <footer>
-      <p>Sarah Gans</p>
+      <p>© Sarah Gans 2020</p>
     </footer>
   );
 }

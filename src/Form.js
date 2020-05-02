@@ -90,7 +90,7 @@ function Form (props) {
       <button className="playing" onClick={props.startAndStop}>
         {props.playing ? "Stop" : "Play"}
       </button>
-      <div className="parent">
+      <div className="parentTwo">
         <p className="form">What music are you playing?</p>
         <input
           className="piece"
