@@ -23,10 +23,9 @@ function Form (props) {
           id="6/4"
           onChange={(e) => props.handleInput(e, "chirpsPerMeasure")}
         />
-        <label for="6/4" className="6/4">
+        <label htmlFor="6/4" className="6/4">
           <span>6/4</span>
         </label>
-
         <input
           type="radio"
           name="meter"
@@ -35,10 +34,9 @@ function Form (props) {
           id="5/4"
           onChange={(e) => props.handleInput(e, "chirpsPerMeasure")}
         />
-        <label for="5/4" className="5/4">
+        <label htmlFor="5/4" className="5/4">
           <span>5/4</span>
         </label>
-
         <input
           type="radio"
           name="meter"
@@ -47,10 +45,9 @@ function Form (props) {
           id="4/4"
           onChange={(e) => props.handleInput(e, "chirpsPerMeasure")}
         />
-        <label for="4/4" className="4/4">
+        <label htmlFor="4/4" className="4/4">
           <span>4/4</span>
         </label>
-
         <input
           type="radio"
           name="meter"
@@ -59,10 +56,9 @@ function Form (props) {
           id="3/4"
           onChange={(e) => props.handleInput(e, "chirpsPerMeasure")}
         />
-        <label for="3/4" className="3/4">
+        <label htmlFor="3/4" className="3/4">
           <span>3/4</span>
         </label>
-
         <input
           type="radio"
           name="meter"
@@ -71,10 +67,9 @@ function Form (props) {
           id="2/4"
           onChange={(e) => props.handleInput(e, "chirpsPerMeasure")}
         />
-        <label for="2/4" className="2/4">
+        <label htmlFor="2/4" className="2/4">
           <span>2/4</span>
         </label>
-
         <input
           type="radio"
           name="meter"
@@ -83,15 +78,18 @@ function Form (props) {
           id="noMeter"
           onChange={(e) => props.handleInput(e, "chirpsPerMeasure")}
         />
-        <label for="noMeter" className="1/4">
+        <label htmlFor="noMeter" className="1/4">
           <span>1/4</span>
         </label>
       </fieldset>
+
       <button className="playing" onClick={props.startAndStop}>
         {props.playing ? "Stop" : "Play"}
       </button>
+
       <div className="parentTwo">
         <p className="form">What music are you playing?</p>
+        <label htmlFor="userLog" className="visuallyHidden">Title</label>
         <input
           className="piece"
           type="text"
@@ -101,6 +99,7 @@ function Form (props) {
           id="userLog"
           onChange={(e) => props.handleInput(e, "userInput")}
         />
+        <label htmlFor="userComp" className="visuallyHidden">Composer</label>
         <input
           className="composer"
           type="text"

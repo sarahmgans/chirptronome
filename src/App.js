@@ -43,7 +43,6 @@ class App extends Component {
       for(let key in data){
         // logName is the object that contains tempo and title
         logsArray.push({logId: key, logName: data[key]})
-        console.log(data[key]);
       }
       this.setState({
         logs: logsArray
@@ -87,7 +86,6 @@ class App extends Component {
     this.setState({
       [state]: event.target.value
     })
-    console.log(state)
   }
 
   chirp = () => {
@@ -148,7 +146,6 @@ class App extends Component {
     const dbRef = firebase.database().ref(logId);
     dbRef.on('value', (item) => {
       const data = item.val();
-      console.log({logId})
 
       const storedTempo = data ? data.tempo : "80"
       const storedMeter = data ? data.meter : "4"
@@ -171,36 +168,39 @@ class App extends Component {
       <div className="chirptronome" id="top">
         <div className="data wrapper">
           <Header />
-          <main>
-            <Byline cpm={userNumberInput} />
-            <Form
-              handleInput={(e, state) => this.handleInput(e, state)
-              }
-              handleSubmit={this.handleSubmit}
-              userNumberInput={this.state.userNumberInput}
-              handleChange={this.handleChange}
-              userInput={this.state.userInput}
-              userCompInput={this.state.userCompInput}
-              chirpsPerMeasure={this.state.chirpsPerMeasure}
-              playing={playing}
-              startAndStop={this.startAndStop}
-            />
-
-            <ul>
-              {this.state.logs.map((log) => {
-                return (
-                  <Log
-                    key={log.logId}
-                    logId={log.logId}
-                    logTitle={log.logName.title}
-                    cpm={log.logName.tempo}
-                    logComp={log.logName.composer}
-                    logMeter={log.logName.meter}
-                    setTempoMeter={this.setTempoMeter}
-                  />
-                );
-              })}
-            </ul>
+          <main className="wrapper">
+            <section>
+              <Byline cpm={userNumberInput} />
+              <Form
+                handleInput={(e, state) => this.handleInput(e, state)
+                }
+                handleSubmit={this.handleSubmit}
+                userNumberInput={this.state.userNumberInput}
+                handleChange={this.handleChange}
+                userInput={this.state.userInput}
+                userCompInput={this.state.userCompInput}
+                chirpsPerMeasure={this.state.chirpsPerMeasure}
+                playing={playing}
+                startAndStop={this.startAndStop}
+              />
+            </section>
+            <section>
+              <ul>
+                {this.state.logs.map((log) => {
+                  return (
+                    <Log
+                      key={log.logId}
+                      logId={log.logId}
+                      logTitle={log.logName.title}
+                      cpm={log.logName.tempo}
+                      logComp={log.logName.composer}
+                      logMeter={log.logName.meter}
+                      setTempoMeter={this.setTempoMeter}
+                    />
+                  );
+                })}
+              </ul>
+            </section>
           </main>
         </div>
         <Footer/>
