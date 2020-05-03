@@ -1,9 +1,11 @@
+// This is the line that displays the tempo that the user adjusts through the range input. 
 
 p.chirps {
   font-family: 'Montserrat';
   text-transform: uppercase;
   font-size: 20px;
   margin-top: 35px;
+  // This span is where the CPM number is displayed. 
   span {
     border-bottom: 3px solid #ff6584;
     font-size: 32px;

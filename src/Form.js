@@ -14,6 +14,7 @@ function Form (props) {
           onChange={props.handleChange}
         />
       </div>
+      {/* This div.radio was originally a fieldset, but Chrome wouldn't allow display-flex on a fieldset, so I had to change it to a div */}
       <div className="radio">
         <input
           type="radio"
@@ -82,13 +83,14 @@ function Form (props) {
           <span>1/4</span>
         </label>
       </div>
-
       <button className="playing" onClick={props.startAndStop}>
+        {/* If the chirptronome is playing, the button says Stop, and if it is not, the button says Play. */}
         {props.playing ? "Stop" : "Play"}
       </button>
 
       <div className="parentTwo">
         <p className="form">What music are you playing?</p>
+        {/* Labels for text inputs visually hidden as the labels were removed and replaced with only placeholders for styling */}
         <label htmlFor="userLog" className="visuallyHidden">Title</label>
         <input
           className="piece"

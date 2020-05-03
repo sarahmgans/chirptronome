@@ -8,6 +8,7 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
+// For the labels in the form that have been replaced by placeholder text for styling reasons. 
 .visuallyHidden:not(:focus):not(:active) {
     position: absolute;
     width: 1px;
@@ -33,6 +34,7 @@ img {
 }
 
 body {
+    // The first two styles are so that the fonts don't get thick in the browser.
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #373737;
@@ -41,6 +43,7 @@ body {
     background-color: #F2F3AE;
 } 
 
+// A wrapper to hold the content on large display
 .wrapper {
     max-width: 1280px;
     width: 90%;

@@ -576,7 +576,7 @@ input[type="radio"] {
 }
 
 input[type="radio"]:focus + label,
-input[type="radio"]:checked + label, input[type="radio"]:active, input[type="radio"]:focus-within {
+input[type="radio"]:checked + label {
   background-color: #3f3d56;
   color: white;
   border-radius: 50%;
@@ -595,6 +595,10 @@ p.form {
   margin-top: 15px;
 }
 
+.data > main:nth-child(2) > form:nth-child(2) {
+  margin-top: 25px;
+}
+
 input[type="text"] {
   width: 365px;
   text-align: left;
@@ -608,6 +612,8 @@ input[type="text"] {
   font-family: 'Montserrat';
   padding-top: 5px;
   padding-bottom: 5px;
+  -webkit-appearance: none;
+  border-radius: 0px;
 }
 
 input[type="text"]:focus {
@@ -634,6 +640,10 @@ input.composer {
 
 .buttonParent > button:nth-child(1) {
   margin-bottom: 19px;
+}
+
+.parent > p:nth-child(1) {
+  margin-bottom: 20px;
 }
 
 .chirptronome button.playing,
@@ -672,16 +682,8 @@ button[type="submit"]:hover, button[type="submit"]:focus-within {
   background-color: #DADCDB;
 }
 
-.data > main:nth-child(2) > form:nth-child(2) {
-  margin-top: 25px;
-}
-
 .swal-footer {
   text-align: center;
-}
-
-.parent > p:nth-child(1) {
-  margin-bottom: 20px;
 }
 
 .headerParent {
@@ -760,17 +762,17 @@ footer p {
   width: 100%;
 }
 
-section ul {
+ul {
   margin: 0;
   padding: 0;
 }
 
-section ul li {
+ul li {
   list-style-type: none;
   text-align: center;
   padding: 5px;
-  width: 55%;
   cursor: pointer;
+  width: 65%;
   margin: 0 auto;
   margin-top: 39px;
   background-color: #3f3d56;
@@ -779,7 +781,7 @@ section ul li {
   padding-bottom: 35px;
 }
 
-section ul li p {
+ul li p {
   font-size: 18px;
   margin: 15px;
   color: white;
@@ -825,6 +827,12 @@ a.replay:hover, a.replay:focus-within, a.replay:active {
   background-color: #3f35f9;
 }
 
+@media (max-width: 950px) {
+  section ul li {
+    width: auto;
+  }
+}
+
 @media (max-width: 820px) {
   img {
     display: none;
@@ -832,8 +840,8 @@ a.replay:hover, a.replay:focus-within, a.replay:active {
   input[type="range"] {
     width: 550px;
   }
-  ul li {
-    width: 90%;
+  section ul li {
+    width: auto;
   }
 }
 
@@ -905,6 +913,9 @@ a.replay:hover, a.replay:focus-within, a.replay:active {
   input[type="range"],
   input[type="text"] {
     width: 280px;
+  }
+  p.chirps {
+    font-size: 17px;
   }
   p.chirps span {
     font-size: 36px;

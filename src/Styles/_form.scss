@@ -3,6 +3,7 @@ display: flex;
 justify-content: center;
 }
 
+// Styling the labels for the radio buttons as they will be replacing the small radio circle. 
 .radio label {
   margin: 20px;
   padding: 10px;
@@ -14,14 +15,13 @@ justify-content: center;
   align-items: center;
 }  
 
+// The radio buttons were set to position absolute and off the page so that the meter could be adjusted through the labels
 input[type="radio"] {
   opacity: 0.01;
   position: absolute;
   left: -1000px;
   &:focus+label,
-  &:checked+label, 
-  &:active,
-  &:focus-within {
+  &:checked+label {
     background-color: #3f3d56;
     color: white;
     border-radius: 50%;
@@ -41,6 +41,11 @@ p.form {
   margin-top: 15px;
 }
 
+.data > main:nth-child(2) > form:nth-child(2) {
+  margin-top: 25px;
+}
+
+// The title and composer inputs
 input[type="text"] {
   width: 365px;
   text-align: left;
@@ -54,6 +59,10 @@ input[type="text"] {
   font-family: 'Montserrat';
   padding-top: 5px;
   padding-bottom: 5px;
+  // These three styles below were used to keep a border-radius of 0 for the inputs when the app was displayed on an iPhone. 
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
   &:focus {
     border-bottom: 1px solid #373737;
     box-shadow: 0 1px 0 0 #373737;
@@ -77,6 +86,11 @@ input.composer {
   margin-bottom: 19px;
 }
 
+.parent > p:nth-child(1) {
+  margin-bottom: 20px;
+}
+
+// The start and submit buttons styling
 .chirptronome button.playing,
 button[type="submit"] {
   background: #ff6584;
@@ -110,17 +124,7 @@ button[type="submit"] {
   }
 }
 
-.data > main:nth-child(2) > form:nth-child(2) {
-  margin-top: 25px;
-}
-
+// The styling for sweet alert so that the button is in the center of the bottom of the alert. 
 .swal-footer {
   text-align: center;
 }
-
-.parent > p:nth-child(1) {
-  margin-bottom: 20px;
-}
-
-
-

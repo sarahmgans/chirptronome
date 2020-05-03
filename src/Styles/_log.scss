@@ -1,12 +1,14 @@
-section ul {
+// holds all of the logs
+ul {
   margin: 0;
   padding: 0;
+  // each li is a log with the saved information from the user. 
   li {
     list-style-type: none;
     text-align: center;
     padding: 5px;
-    width: 55%;
     cursor: pointer;
+    width: 65%;
     margin: 0 auto;
     margin-top: 39px;
     background-color: #3f3d56;
@@ -22,6 +24,7 @@ section ul {
   }
 }
 
+// Margin above the button in the li.
 ul li p.last {
   margin-bottom: 27px;
 }
@@ -32,6 +35,7 @@ span.bold {
   text-transform: uppercase;
 }
 
+// The delete button in the top right corner
 span.x {
   font-size: 39px;
   color: #ff6584;
@@ -44,6 +48,7 @@ span.x {
   }
 }
 
+// The button to restore the users previous settings
 a.replay {
   font-family: 'Montserrat';
   border: none;

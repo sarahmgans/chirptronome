@@ -1,8 +1,10 @@
+// Display flex on the image and the header so that they are side by side. 
 .headerParent {
   display: flex;
   justify-content: center;
 }
 
+// The small image to the left of the header
 img {
   width: 126px;
   margin-top: 0px;
@@ -10,6 +12,7 @@ img {
   height: 160px; 
 }
 
+// The header for the app
 h1 {
   font-family: 'Oswald', sans-serif;
   font-weight: 600;

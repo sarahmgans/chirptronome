@@ -3,11 +3,13 @@ import firebase from "./firebase";
 
 function Log(props) {
 
+  // A function for deleting the log (li) on click of the button in the top right corner.
   const deleteItem = () => {
     const itemRef = firebase.database().ref(props.logId);
     itemRef.remove();
   };
 
+  // A function for deleting the log on the pressing of the enter key. 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       const itemRef = firebase.database().ref(props.logId);
@@ -27,6 +29,7 @@ function Log(props) {
         <span className="bold">Tempo:</span> {props.cpm} Chirps per Minute
       </p>
       <p className="last">
+        {/* A /4 is added, as in the state, the values are only integers and not in the fraction form that would be recognized in music. */}
         <span className="bold">Meter:</span> {props.logMeter}/4
       </p>
       <a href="#top"

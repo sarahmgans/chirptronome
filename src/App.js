@@ -3,19 +3,21 @@ import './Styles/App.scss'
 import swal from "sweetalert";
 import firebase from './firebase';
 
+// Importing components 
 import Log from './Log'
 import Header from './Header';
 import Byline from './Byline';
 import Form from './Form';
 import Footer from './Footer';
 
+// Importing audio files
 import chirp1 from './chirp1.wav';
 import chirp2 from './chirp2.mp3';
 
 class App extends Component {
   constructor(){
     super();
-    // The state is initialized so that the playing begins at false, the count at 0, the chirps per minute at 80, the chirps per measure at 4, the logs an empty array and the text inputs empty strings.  
+    // The state is initialized so that playing begins at false, count at 0, userNumberInput (chirps per minute) at 80, chirpsPerMeasure at 4, logs an empty array, and text inputs (title and composer) empty strings.  
     this.state = {
       playing: false,
       count: 0,
@@ -31,17 +33,16 @@ class App extends Component {
     this.chirp2 = new Audio(chirp2);
   }
 
-  // grab the list of logs from our database
+  // Below we are grabbing a list of the logs from firebase to put it on the page
   componentDidMount() {
-    // set up a listener to firebase
+    // A listener is set up to firebase
     const dbRef = firebase.database().ref();
-    // taking info out of firebase to put on page
+    // Info is taken out of firebase to put on the page
     dbRef.on('value', (result) => {
       const data = result.val();
-      // turn data from an object into an array
+      // Data from an object is then turned into an array 
       const logsArray = []
       for(let key in data){
-        // logName is the object that contains tempo and title
         logsArray.push({logId: key, logName: data[key]})
       }
       this.setState({
@@ -51,11 +52,11 @@ class App extends Component {
   }
 
   handleSubmit = (e) => {
-    // putting info into firebase
+    // Below we are putting info into firebase
     e.preventDefault()
     if (this.state.userInput !=='' && this.state.userCompInput !=='' && this.state.userDate !== ''){
       const dbRef = firebase.database().ref()
-      // object that will be in firebase
+      // Object that will be saved in firebase
       const toSave = {
         title: this.state.userInput,
         composer: this.state.userCompInput,
@@ -65,12 +66,13 @@ class App extends Component {
 
       dbRef.push(toSave)
       
-      // Clears the two text inputs on store while maintaining the tempo and the meter.
+      // When the user presses Store, all of their information is stored. While the text inputs are emptied, the tempo and the meter remain. This is so that the user can keep playing at their tempo and meter even after they are stored.
       this.setState({
         userInput:'',
         userCompInput: ''
       })
 
+    // Error handling to make sure that the user fills out all of the inputs before storing. 
     } else {
       swal({
         title: "Error!",
@@ -89,28 +91,29 @@ class App extends Component {
   }
 
   chirp = () => {
-    // If the metronome is on the downbeat of the four-beat pattern that is set in the state, chirp2 will play.
+    // If the metronome is on the downbeat of the four-beat pattern that is set in the state, chirp2 (louder chirp) will play.
     if (this.state.count % this.state.chirpsPerMeasure === 0) {
       this.chirp2.play();
     } else {
       this.chirp1.play();
     }
 
-    // The setState method allows the count to increase by one by passing in an object with the key of count and setting it to count plus one. It also keeps track of which beat in each 4/4 measure we are on by using the modulo operator and the chirpsPerMeasure. 
+    // The setState method allows for the count to increase by 1 by passing in an object with the key of count, and setting it to count plus one. It also keeps track of which beat in each 4/4 measure we are on by using the modulo operator and the chirpsPerMeasure. 
     this.setState(state => ({
       count: (state.count + 1) % state.chirpsPerMeasure
     }));
   }
 
   startAndStop = (e) => {
-    // If the chirptronome is playing and you want it to stop, press the Stop button. This will stop it from playing by clearing the interval (timer) and setting the playing value to false. The Stop button will change back to a Start button (as directed by the ternary operator in the button element). 
+    // If the chirptronome is playing and you want it to stop, press the Stop button. This will stop it from playing by clearing the interval and setting the playing value to false in setState. The Stop button will also change back to a Start button (as directed by the ternary operator in the button element). 
     e.preventDefault();
     if (this.state.playing) {
       clearInterval(this.timer);
       this.setState({
         playing: false
       });
-      // However, if it is not already playing, a timer is set that takes the number 60, divides it by the cpm chosen by the user, and multiplies it by 1 second. 
+
+      // However, if it is not already playing, a timer is set that takes the number 60, divides it by the cpm chosen by the user, and multiplies it by 1 second. The count is then set to 0 and the playing value to true in the setState. 
     } else {
       this.timer = setInterval(this.chirp, (60 / this.state.userNumberInput) * 1000);
       this.setState({
@@ -142,11 +145,13 @@ class App extends Component {
     }
   }
 
+  // Here, when the user clicks on the log (li) Play Me Again button, all of their chosen settings that were stored in the particular li that they clicked on are brought back. 
   setTempoMeter = (logId) => {
     const dbRef = firebase.database().ref(logId);
     dbRef.on('value', (item) => {
       const data = item.val();
 
+      // Error handling so that if there is data it goes back into the inputs, but if there is not data, the inputs are reset to the values in the initialized state.
       const storedTempo = data ? data.tempo : "80"
       const storedMeter = data ? data.meter : "4"
       const storedCompInput = data ? data.composer : ''
@@ -162,8 +167,10 @@ class App extends Component {
   )}
 
   render(){
+    // Destructuring
     const { playing, userNumberInput } = this.state;
 
+    // What will be printed to the page
     return (
       <div className="chirptronome" id="top">
         <div className="data wrapper">
