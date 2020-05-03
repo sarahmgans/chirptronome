@@ -14,7 +14,7 @@ function Form (props) {
           onChange={props.handleChange}
         />
       </div>
-      <fieldset className="radio">
+      <div className="radio">
         <input
           type="radio"
           name="meter"
@@ -81,7 +81,7 @@ function Form (props) {
         <label htmlFor="noMeter" className="1/4">
           <span>1/4</span>
         </label>
-      </fieldset>
+      </div>
 
       <button className="playing" onClick={props.startAndStop}>
         {props.playing ? "Stop" : "Play"}

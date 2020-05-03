@@ -3,7 +3,7 @@ display: flex;
 justify-content: center;
 }
 
-fieldset.radio label {
+.radio label {
   margin: 20px;
   padding: 10px;
   font-size: 17px;
@@ -34,7 +34,7 @@ p.form {
   font-size: 20px;
 }
 
-fieldset {
+.radio {
   width: 50%;
   margin: 0 auto;
   border: none;
