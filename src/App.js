@@ -17,7 +17,7 @@ import chirp2 from './chirp2.mp3';
 class App extends Component {
   constructor(){
     super();
-    // The state is initialized so that playing begins at false, count at 0, userNumberInput (chirps per minute) at 80, chirpsPerMeasure at 4 (4/4 time), logs an empty array, and text inputs (title and composer) empty strings.  
+    // The state is initialized so that the playing begins at false, count at 0, userNumberInput (chirps per minute) at 80, chirpsPerMeasure at 4 (4/4 time), logs an empty array, and text inputs (title and composer) empty strings.  
     this.state = {
       playing: false,
       count: 0,
