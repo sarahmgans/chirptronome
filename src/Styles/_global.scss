@@ -37,10 +37,10 @@ body {
     // The first two styles are so that the fonts don't get thick in the browser.
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #373737;
+    color: $darkFont;
     font-family: 'Montserrat';
     font-weight: 300;
-    background-color: #F2F3AE;
+    background-color: $backgroundColor;
 } 
 
 // A wrapper to hold the content on large display

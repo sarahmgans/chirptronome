@@ -29,7 +29,7 @@ function Log(props) {
         <span className="bold">Tempo:</span> {props.cpm} Chirps per Minute
       </p>
       <p className="last">
-        {/* A /4 is added, as in the state, the values are only integers and not in the fraction form that would be recognized in music. */}
+        {/* A /4 is added, as in the state, the values are only in integers and not in the fraction form that would be recognized in music. */}
         <span className="bold">Meter:</span> {props.logMeter}/4
       </p>
       <a href="#top"

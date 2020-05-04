@@ -590,9 +590,8 @@ p.form {
 
 .radio {
   width: 50%;
-  margin: 0 auto;
+  margin: 15px auto 0 auto;
   border: none;
-  margin-top: 15px;
 }
 
 .data > main:nth-child(2) > form:nth-child(2) {
@@ -604,14 +603,12 @@ input[type="text"] {
   text-align: left;
   border: none;
   border-bottom: 1px solid #373737;
-  margin-bottom: 30px;
   font-size: 20px;
-  margin-top: 20px;
+  margin: 20px 0 30px 0;
   background-color: transparent;
   color: #373737;
   font-family: 'Montserrat';
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 5px 0 5px 0;
   -webkit-appearance: none;
   border-radius: 0px;
 }
@@ -627,8 +624,7 @@ input[type="text"]:focus:focus + label {
 }
 
 input.composer {
-  margin-top: 13px;
-  margin-bottom: 39px;
+  margin: 13px 0 39px 0;
 }
 
 .buttonParent {
@@ -658,13 +654,10 @@ button[type="submit"] {
   -webkit-transition: 0.3s;
   transition: 0.3s;
   margin: 0 auto;
-  margin-right: 15px;
-  margin-left: 15px;
 }
 
 .chirptronome button.playing {
-  margin-bottom: 15px;
-  margin-top: 22px;
+  margin: 32px 0 15px 0;
 }
 
 .chirptronome button.playing:hover {
@@ -672,8 +665,6 @@ button[type="submit"] {
 }
 
 button[type="submit"] {
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
   background-color: #F2F4F3;
   color: #ff6584;
 }
@@ -697,8 +688,7 @@ button[type="submit"]:hover, button[type="submit"]:focus-within {
 
 img {
   width: 126px;
-  margin-top: 0px;
-  margin-right: 13px;
+  margin: 0 13px 0 0;
   height: 160px;
 }
 
@@ -707,8 +697,7 @@ h1 {
   font-weight: 600;
   text-transform: uppercase;
   font-size: 90px;
-  margin-top: 0;
-  margin-bottom: 21px;
+  margin: 0 0 21px 0;
   padding-top: 36px;
   color: #373737;
   letter-spacing: 2px;
@@ -744,18 +733,15 @@ p.chirps {
 
 p.chirps span {
   border-bottom: 3px solid #ff6584;
-  font-size: 32px;
   font-size: 40px;
   margin-right: 15px;
 }
 
 footer p {
   font-size: 16px;
-  margin-top: 39px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  margin: 39px 0 0 0;
+  padding: 10px 0 10px 0;
   background-color: #3f3d56;
-  margin-bottom: 0;
   color: white;
   letter-spacing: 1px;
   font-weight: 300;
@@ -773,8 +759,7 @@ ul li {
   padding: 5px;
   cursor: pointer;
   width: 65%;
-  margin: 0 auto;
-  margin-top: 39px;
+  margin: 39px auto 0 auto;
   background-color: #3f3d56;
   border-radius: 20px;
   position: relative;
@@ -804,6 +789,8 @@ span.x {
   position: absolute;
   top: 5px;
   right: 12px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 span.x:hover, span.x:focus-within {

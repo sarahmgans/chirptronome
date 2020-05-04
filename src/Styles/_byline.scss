@@ -7,8 +7,7 @@ p.chirps {
   margin-top: 35px;
   // This span is where the CPM number is displayed. 
   span {
-    border-bottom: 3px solid #ff6584;
-    font-size: 32px;
+    border-bottom: 3px solid $accentLight;
     font-size: 40px;
     margin-right: 15px;
   }

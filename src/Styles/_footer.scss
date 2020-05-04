@@ -1,11 +1,9 @@
 footer {
   p{
     font-size: 16px;
-    margin-top: 39px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: #3f3d56;
-    margin-bottom: 0;
+    margin: 39px 0 0 0;
+    padding: 10px 0 10px 0;
+    background-color: $logBackground;
     color: white;
     letter-spacing: 1px;
     font-weight: 300;

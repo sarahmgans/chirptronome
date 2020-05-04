@@ -17,7 +17,7 @@ import chirp2 from './chirp2.mp3';
 class App extends Component {
   constructor(){
     super();
-    // The state is initialized so that playing begins at false, count at 0, userNumberInput (chirps per minute) at 80, chirpsPerMeasure at 4, logs an empty array, and text inputs (title and composer) empty strings.  
+    // The state is initialized so that playing begins at false, count at 0, userNumberInput (chirps per minute) at 80, chirpsPerMeasure at 4 (4/4 time), logs an empty array, and text inputs (title and composer) empty strings.  
     this.state = {
       playing: false,
       count: 0,
@@ -33,7 +33,7 @@ class App extends Component {
     this.chirp2 = new Audio(chirp2);
   }
 
-  // Below we are grabbing a list of the logs from firebase to put it on the page
+  // Below we are grabbing info from firebase to put it on the page
   componentDidMount() {
     // A listener is set up to firebase
     const dbRef = firebase.database().ref();
@@ -98,7 +98,7 @@ class App extends Component {
       this.chirp1.play();
     }
 
-    // The setState method allows for the count to increase by 1 by passing in an object with the key of count, and setting it to count plus one. It also keeps track of which beat in each 4/4 measure we are on by using the modulo operator and the chirpsPerMeasure. 
+    // The setState method allows for the count to increase by 1 by passing in an object with the key of count, and setting it to count plus one. It also keeps track of which beat in each measure we are on by using the modulo operator and the chirpsPerMeasure. 
     this.setState(state => ({
       count: (state.count + 1) % state.chirpsPerMeasure
     }));
@@ -145,13 +145,13 @@ class App extends Component {
     }
   }
 
-  // Here, when the user clicks on the log (li) Play Me Again button, all of their chosen settings that were stored in the particular li that they clicked on are brought back. 
+  // Here, when the user clicks on the log (li) Play Me Again button, all of their chosen settings that were stored in the particular li that they clicked on, are restored. 
   setTempoMeter = (logId) => {
     const dbRef = firebase.database().ref(logId);
     dbRef.on('value', (item) => {
       const data = item.val();
 
-      // Error handling so that if there is data it goes back into the inputs, but if there is not data, the inputs are reset to the values in the initialized state.
+      // Error handling so that if there is data, it goes back into the inputs, but if there is no data, the inputs are reset to the values in the initialized state.
       const storedTempo = data ? data.tempo : "80"
       const storedMeter = data ? data.meter : "4"
       const storedCompInput = data ? data.composer : ''

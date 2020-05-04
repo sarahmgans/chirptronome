@@ -9,9 +9,8 @@ ul {
     padding: 5px;
     cursor: pointer;
     width: 65%;
-    margin: 0 auto;
-    margin-top: 39px;
-    background-color: #3f3d56;
+    margin: 39px auto 0 auto;
+    background-color: $logBackground;
     border-radius: 20px;
     position: relative;
     padding-bottom: 35px;
@@ -38,10 +37,11 @@ span.bold {
 // The delete button in the top right corner
 span.x {
   font-size: 39px;
-  color: #ff6584;
+  color: $accentLight;
   position: absolute;
   top: 5px;
   right: 12px;
+  transition: 0.3s;
   &:hover,
   &:focus-within {
     color: #e23558;
@@ -54,7 +54,7 @@ a.replay {
   border: none;
   text-transform: uppercase;
   padding: 10px 20px;
-  background-color: #6c63ff;
+  background-color: $accentDark;
   color: white;
   font-weight: 300;
   transition: 0.3s;

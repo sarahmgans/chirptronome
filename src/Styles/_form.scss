@@ -22,7 +22,7 @@ input[type="radio"] {
   left: -1000px;
   &:focus+label,
   &:checked+label {
-    background-color: #3f3d56;
+    background-color: $logBackground;
     color: white;
     border-radius: 50%;
   }
@@ -36,9 +36,8 @@ p.form {
 
 .radio {
   width: 50%;
-  margin: 0 auto;
+  margin: 15px auto 0 auto;
   border: none;
-  margin-top: 15px;
 }
 
 .data > main:nth-child(2) > form:nth-child(2) {
@@ -50,31 +49,28 @@ input[type="text"] {
   width: 365px;
   text-align: left;
   border: none;
-  border-bottom: 1px solid #373737;
-  margin-bottom: 30px;
+  border-bottom: 1px solid $darkFont;
   font-size: 20px;
-  margin-top: 20px;
+  margin: 20px 0 30px 0;
   background-color: transparent;
-  color: #373737;
+  color: $darkFont;
   font-family: 'Montserrat';
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 5px 0 5px 0;
   // These three styles below were used to keep a border-radius of 0 for the inputs when the app was displayed on an iPhone. 
     -webkit-appearance: none;
     -webkit-border-radius: 0px;
     border-radius: 0px;
   &:focus {
-    border-bottom: 1px solid #373737;
-    box-shadow: 0 1px 0 0 #373737;
+    border-bottom: 1px solid $darkFont;
+    box-shadow: 0 1px 0 0 $darkFont;
   &:focus + label {
-    color: #373737;
+    color: $darkFont;
     }
   }
 }
 
 input.composer {
-  margin-top: 13px;
-  margin-bottom: 39px;
+  margin: 13px 0 39px 0;
 }
 
 .buttonParent {
@@ -93,7 +89,7 @@ input.composer {
 // The start and submit buttons styling
 .chirptronome button.playing,
 button[type="submit"] {
-  background: #ff6584;
+  background: $accentLight;
   padding: 11px 18px;
   width: 170px;
   color: #F2F4F3;
@@ -102,22 +98,18 @@ button[type="submit"] {
   font-family: 'Montserrat';
   transition: 0.3s;
   margin: 0 auto;
-  margin-right: 15px;
-  margin-left: 15px;
 }
 
 .chirptronome button.playing {
-  margin-bottom: 15px;
-  margin-top: 22px;
+  margin: 32px 0 15px 0;
   &:hover {
     background: #e23558;
   }
 }
 
 button[type="submit"] {
-  transition: 0.3s;
   background-color: #F2F4F3;
-  color: #ff6584;
+  color: $accentLight;
   &:hover,
   &:focus-within {
     background-color: #DADCDB;
