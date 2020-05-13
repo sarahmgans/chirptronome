@@ -60,6 +60,7 @@
 
   .radio {
     flex-wrap: wrap;
+    width: 79%;
   }
 
   input[type="range"] {
@@ -107,7 +108,9 @@
       margin-right: 10px;
     }
   }
-
+  .radio {
+    width: 90%;
+  }
   // The wrapper is made larger for smaller devices. 
   .wrapper {
     width: 96%;
