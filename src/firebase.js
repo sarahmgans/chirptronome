@@ -1,8 +1,9 @@
-import firebase from 'firebase/app'
-import 'firebase/database'
+// import firebase from 'firebase/app'
+// import 'firebase/database'
+import firebase from 'firebase'
 
 // Your web app's Firebase configuration
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyAQvM7s0oSwsITm9vlEVDHh6iy8LFYBSq8",
   authDomain: "chirptronome.firebaseapp.com",
   databaseURL: "https://chirptronome.firebaseio.com",
@@ -15,4 +16,6 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-export default firebase
+export const provider = new firebase.auth.GoogleAuthProvider();
+export const auth = firebase.auth();
+export default firebase;

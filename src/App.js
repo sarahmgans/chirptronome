@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Styles/App.scss'
 import swal from "sweetalert";
-import firebase from './firebase';
+import firebase, {auth, provider} from './firebase';
 
 // Importing components 
 import Log from './Log'
@@ -25,13 +25,52 @@ class App extends Component {
       userInput: '',
       userCompInput: '',
       userNumberInput: "80",
-      chirpsPerMeasure: "4"
+      chirpsPerMeasure: "4", 
+      user: null
     }
 
     // Audio files of bird sounds
     this.chirp1 = new Audio(chirp1);
     this.chirp2 = new Audio(chirp2);
+
+    // Bind functions to constructor because we will need to call this.setState inside of them and we need access to this
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
   }
+
+  // Login method which will handle our authentication with firebase
+  login() {
+    auth.signInWithPopup(provider)
+      .then((result) => {
+        const user = result.user;
+        this.setState({
+          user
+        })
+      })
+  }
+  // Logout method
+  logout(){
+    auth.signOut()
+      .then(() => {
+        this.setState({
+          user: null
+        })
+      })
+  }
+
+  handleChange(e){
+
+  }
+
+
+  // Check if the user was already signed in the last time they visited your app. If they were, we set their user details back into the state. 
+  // componentDidMount() {
+  //   auth.onAuthStateChanged((user) => {
+  //     if (user) {
+  //       this.setState({ user });
+  //     }
+  //   })
+  // }
 
   // Below we are grabbing info from firebase to put it on the page
   componentDidMount() {
@@ -49,6 +88,11 @@ class App extends Component {
         logs: logsArray
       })
     })
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ user });
+      }
+    });
   }
 
   handleSubmit = (e) => {
@@ -173,6 +217,24 @@ class App extends Component {
     // What will be printed to the page
     return (
       <div className="chirptronome" id="top">
+        <div className="wrapper">
+        {this.state.user ?
+          <button onClick={this.logout}>Log Out</button>
+          :
+          <button onClick={this.login}>Log In</button>
+        }
+      </div>
+      {this.state.user ?
+        <div>
+          <div className='userProfile'>
+            <img src="{this.state.user.photoURL" alt="photo"/>
+          </div>  
+        </div> 
+        :
+        <div className="wrapper">
+          <p>You must be logged in</p>
+        </div>
+        }
         <div className="data wrapper">
           <Header />
           <main className="wrapper">
