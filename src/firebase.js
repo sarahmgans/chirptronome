@@ -1,7 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/database'
 
-// Your web app's Firebase configuration
+// Web app's Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyAQvM7s0oSwsITm9vlEVDHh6iy8LFYBSq8",
   authDomain: "chirptronome.firebaseapp.com",
